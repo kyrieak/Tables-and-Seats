@@ -50,6 +50,3 @@ group :development, :test do
   gem "autotest"
 end
 
-
-group :development, :test do
-end
