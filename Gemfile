@@ -50,3 +50,6 @@ group :development, :test do
   gem "autotest"
 end
 
+group :test do
+  gem "capybara"
+end
