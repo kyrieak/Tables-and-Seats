@@ -1,0 +1,2 @@
+class RetroController < ApplicationController
+end
