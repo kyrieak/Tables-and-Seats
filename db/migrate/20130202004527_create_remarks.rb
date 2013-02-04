@@ -3,7 +3,7 @@ class CreateRemarks < ActiveRecord::Migration
     create_table :remarks do |t|
       t.string :title
       t.text :explanation
-      t.boolean :postive
+      t.boolean :positive
 
       t.timestamps
     end

@@ -4,6 +4,6 @@ FactoryGirl.define do
   factory :remark do
     title "MyString"
     explanation "MyText"
-    postive false
+    positive false
   end
 end
