@@ -1,14 +1,77 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Brimstone</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  <head>
+    <title><%= @app_name %></title>
+    <%= stylesheet_link_tag "bootstrap", :media => "all" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+    <style type='text/css'>
+      .container-fluid > .sidebar {
+        position: relative;
+        top: 0;
+        left:auto;
+        width: 220px;
+      }
 
-<%= yield %>
+      .left {
+        float:left;
+      }
 
+      .right {
+        float:right;
+      }
+
+      .fixed-fluid {
+        margin-left: 240px;
+      }
+      .fluid-fixed {
+        margin-right: 240px;
+        margin-left:auto !important;
+      }
+      .fixed-fixed {
+        margin: 0 240px;
+      }
+
+    </style>
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="/"><%= @app_name %></a>
+          <ul class="nav">
+            <li class="active"><a href="/">Home</a></li>
+          </ul>
+          <ul class="nav pull-right">
+            <% if user_signed_in? %>
+              <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
+            <% else %>
+              <li><%= link_to "Sign Up", new_user_registration_path %></li>
+              <li><%= link_to "Sign In", new_user_session_path %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid">
+      <%= flash_messages %>
+      <%= yield %>
+      <hr>
+      <footer>
+        <p>&copy; <%= @app_name %> <%= Date.today.year %></p>
+      </footer>
+    </div>
+</div>
 </body>
 </html>
