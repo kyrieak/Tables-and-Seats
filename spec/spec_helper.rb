@@ -1,7 +1,7 @@
 require 'rubygems'
 require 'spork'
 require 'capybara/rspec'
-
+require 'factory_girl'
 #uncomment the following line to use spork with the debugger
 #require 'spork/ext/ruby-debug'
 
@@ -10,6 +10,9 @@ Spork.prefork do
   # if you change any configuration or code from libraries loaded here, you'll
   # need to restart spork for it take effect.
 
+  RSpec.configure do |config|
+    config.include FactoryGirl::Syntax::Methods
+  end
 end
 
 Spork.each_run do
