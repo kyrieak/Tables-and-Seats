@@ -1,5 +1,9 @@
 require 'spec_helper'
 
 describe Remark do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it "has a connotation" do
+    create :remark, :positive => false
+    
+  end
+  it "requires a connotation"
 end
