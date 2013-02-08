@@ -13,9 +13,13 @@ class RemarksController < ApplicationController
 
     respond_to do |format|
       if @remark.save
-        format.html { redirect_to remarks_path, notice: 'Remark was successfully created' }
+        format.html do
+          redirect_to remarks_path, notice: 'Remark was successfully created'
+        end
       else
-        format.html { render 'new', alert: "Unable to save remark: #{@remark.errors.full_messages.join(' ')}" }
+        format.html do
+          render 'new'
+        end
       end
     end
   end

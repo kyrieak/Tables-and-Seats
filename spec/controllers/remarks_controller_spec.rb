@@ -2,13 +2,35 @@ require 'spec_helper'
 
 describe RemarksController do
   describe "#create" do
-    it "redirects to index page on success" do
-      post :create, {:remark => {:title => "Remark", :connotation_id => 1}}
-      response.should redirect_to remarks_path
+    describe "success" do
+
+      before do
+        post :create, {:remark => {:title => "Remark", :connotation_id => 1}}
+      end
+
+      it "redirects to index page" do
+        response.should redirect_to remarks_path
+      end
+
+      it "sets the flash message" do
+        flash[:notice].should eq "Remark was successfully created"
+      end
+    end
+
+    describe "failure" do
+      before do
+        post :create, {:remark => {:title => nil}}
+      end
+
+      it "re-renders the new page" do
+        response.should render_template :new
+      end
+
     end
   end
 
   describe "#delete" do
+
     let!(:remark) { create :remark }
 
     it("changes the remark count") do
@@ -18,6 +40,7 @@ describe RemarksController do
     end
 
     describe "success" do
+
       before do
         delete :destroy, {:id => remark}
       end
@@ -34,6 +57,7 @@ describe RemarksController do
 
 
     describe "failure" do
+
       before do
         delete :destroy, {:id => '121222222'}
       end
@@ -45,6 +69,7 @@ describe RemarksController do
       it "redirects to remarks path" do
         response.should redirect_to remarks_path
       end
+
     end
 
   end
