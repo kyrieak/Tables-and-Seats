@@ -50,6 +50,13 @@ group :development, :test do
   gem 'zeus'
 end
 
+group :development do
+  gem 'guard'
+  gem 'rb-inotify', :require => false
+  gem 'rb-fsevent', :require => false
+  gem 'rb-fchange', :require => false
+end
+
 group :test do
   gem "capybara"
 end
