@@ -1,5 +1,7 @@
 class Remark < ActiveRecord::Base
-  belongs_to :retro
-  has_one :connotation
-  attr_accessible :explanation, :positive, :title
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to :retros
+  belongs_to_active_hash :connotation
+  validates_presence_of :connotation, :title
+  attr_accessible :explanation, :title, :connotation_id
 end

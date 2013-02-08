@@ -4,6 +4,7 @@ class CreateRemarks < ActiveRecord::Migration
       t.string :title
       t.text :explanation
       t.boolean :positive
+      t.integer :retro_id
 
       t.timestamps
     end

@@ -1,6 +1,8 @@
 Create a remark
 <%= form_for @remark do |f| %>
-  <%= select_tag "connotation",
-    options_from_collection_for_select(Connotation.all, 'id', 'name'),
-    :prompt => 'Select...' %>
+  <%= f.label :title, "Remark" %>
+  <%= f.text_field :title %><br>
+  <%= f.label :connotation_id %>
+  <%= f.collection_select(:connotation_id, Connotation.all, :id, :name, { :prompt => 'Select...'})  %><br>
+  <%= f.submit "Save" %>
 <% end %>

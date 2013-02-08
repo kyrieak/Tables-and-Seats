@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130204191753) do
+ActiveRecord::Schema.define(:version => 20130208000812) do
 
   create_table "assignments", :force => true do |t|
     t.integer  "user_id"
@@ -23,8 +23,10 @@ ActiveRecord::Schema.define(:version => 20130204191753) do
   create_table "remarks", :force => true do |t|
     t.string   "title"
     t.text     "explanation"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.integer  "retro_id"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+    t.integer  "connotation_id"
   end
 
   create_table "retros", :force => true do |t|
@@ -33,6 +35,7 @@ ActiveRecord::Schema.define(:version => 20130204191753) do
     t.boolean  "voting_allowed"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
+    t.string   "name"
   end
 
   create_table "roles", :force => true do |t|

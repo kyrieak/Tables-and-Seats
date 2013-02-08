@@ -1,7 +1,7 @@
 class Connotation < ActiveHash::Base
   include ActiveHash::Associations
-  belongs_to :remark
   include ActiveHash::Enum
+  has_many :remarks
   self.data = [
     {:id => 1, :name => "Positive"},
     {:id => 2, :name => "Neutral"},
