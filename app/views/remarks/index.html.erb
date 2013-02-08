@@ -1,0 +1,9 @@
+<table class="remarks">
+  <% @remarks.each do |remark| %>
+    <tr>
+      <td><%= remark.title %></td>
+    </td>
+  <% end %>
+</table>
+
+<%= link_to "Add a remark", new_remark_path %>
