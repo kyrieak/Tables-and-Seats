@@ -45,11 +45,11 @@ gem "haml-rails"
 gem "dynamic_form"
 gem "active_hash"
 
+
 group :development, :test do
   gem "rspec-rails"
   gem "factory_girl_rails"
   gem "spork"
-  gem "autotest"
 end
 
 group :test do
