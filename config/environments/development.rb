@@ -34,4 +34,5 @@ Brimstone::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+  default_url_options[:host] = "0.0.0.0:3000"
 end
