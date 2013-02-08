@@ -23,7 +23,8 @@ describe "Creating a Remark" do
       fill_in "Remark", :with => "This worked well"
       select('Negative', :from => 'Connotation')
       click_button "Save"
-      click_link "Delete"
+      page.first("a.remark_delete").click
+
       page.should have_content "successfully deleted"
     end
   end
