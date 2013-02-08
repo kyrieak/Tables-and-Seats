@@ -7,8 +7,6 @@ gem 'rails', '3.2.11'
 
 gem 'sqlite3'
 
-gem 'ccd_mvp', :git => "git@github.com:cloud-city-development/ccd_mvp.git"
-
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
