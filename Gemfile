@@ -44,6 +44,7 @@ gem "cancan"
 gem "haml-rails"
 gem "dynamic_form"
 gem "active_hash"
+gem 'simplecov', :require => false, :group => :test
 
 group :development, :test do
   gem "rspec-rails"
