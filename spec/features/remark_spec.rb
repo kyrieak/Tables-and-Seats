@@ -16,4 +16,15 @@ describe "Creating a Remark" do
       page.should have_content "Title can't be blank"
     end
   end
+  describe "deleting a remark" do
+    it "succeeds" do
+      visit "/remarks"
+      click_link "Add a remark"
+      fill_in "Remark", :with => "This worked well"
+      select('Negative', :from => 'Connotation')
+      click_button "Save"
+      click_link "Delete"
+      page.should have_content "successfully deleted"
+    end
+  end
 end

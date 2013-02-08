@@ -2,6 +2,7 @@
   <% @remarks.each do |remark| %>
     <tr>
       <td><%= remark.title %></td>
+      <td><%= link_to  "Delete", remark_path(remark), :method => :delete %></td>
     </td>
   <% end %>
 </table>
