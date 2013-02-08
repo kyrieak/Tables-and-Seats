@@ -1,9 +1,15 @@
-<table class="remarks">
-  <% @remarks.each do |remark| %>
-    <tr>
-      <td><%= remark.title %></td>
-      <td><%= link_to  "Delete", remark_path(remark), :method => :delete, :class => "remark_delete" %></td>
-    </td>
+<table class="remarks" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+  <% if @remarks.count > 0 then %>
+      <% @remarks.each do |remark| %>
+          <tr>
+            <td><%= remark.title %></td>
+            <td><%= link_to "Delete", remark_path(remark), :method => :delete, :class => "remark_delete" %></td>
+            </td>
+      <% end %>
+  <% else %>
+     There are no remarks in this retrospective
+      <br>
+      <br>
   <% end %>
 </table>
 

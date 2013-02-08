@@ -24,6 +24,37 @@ describe "Creating a Remark" do
       select('Negative', :from => 'Connotation')
       click_button "Save"
       page.first("a.remark_delete").click
+      page.should have_content "successfully deleted"
+    end
+  end
+
+  describe "listing remarks" do
+    it "shows empty lists correctly" do
+      visit "/remarks"
+      page.should have_content "There are no remarks"
+    end
+
+    it "shows non-empty lists correctly" do
+      visit "/remarks"
+      click_link "Add a remark"
+      fill_in "Remark", :with => "Comedy"
+      select('Negative', :from => 'Connotation')
+      click_button "Save"
+
+      click_link "Add a remark"
+      fill_in "Remark", :with => "Drama"
+      select('Neutral', :from => 'Connotation')
+      click_button "Save"
+
+      click_link "Add a remark"
+      fill_in "Remark", :with => "Dramedy"
+      select('Positive', :from => 'Connotation')
+      click_button "Save"
+
+      page.should_not have_content "There are no remarks"
+      page.should have_content "Drama"
+      page.should have_content "Comedy"
+      page.should have_content "Dramedy"
 
       page.should have_content "successfully deleted"
     end
