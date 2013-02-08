@@ -7,8 +7,6 @@ gem 'rails', '3.2.11'
 
 gem 'sqlite3'
 
-gem 'ccd_mvp', :git => "git@github.com:cloud-city-development/ccd_mvp.git"
-
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -50,6 +48,14 @@ group :development, :test do
   gem "rspec-rails"
   gem "factory_girl_rails"
   gem 'zeus'
+end
+
+group :development do
+  gem 'guard'
+  gem 'rb-inotify', :require => false
+  gem 'rb-fsevent', :require => false
+  gem 'rb-fchange', :require => false
+  gem 'guard-rspec'
 end
 
 group :test do
