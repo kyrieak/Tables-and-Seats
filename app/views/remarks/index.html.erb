@@ -3,7 +3,7 @@
       <% @remarks.each do |remark| %>
           <tr>
             <td><%= remark.title %></td>
-            <td><%= link_to "Delete", remark_path(remark), :method => :delete %></td>
+            <td><%= link_to "Delete", remark_path(remark), :method => :delete, :class => "remark_delete" %></td>
             <td><%= link_to "Edit", edit_remark_path(remark) %></td>
       <% end %>
   <% else %>

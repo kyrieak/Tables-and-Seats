@@ -17,20 +17,20 @@ describe Retro do
   
   context "validations" do
     it "has a name" do
-        create(:retro, :name => "Elephant").should be_valid
+        build(:retro, :name => "Elephant").should be_valid
       end
 
       it "has a state" do
-        create(:retro, :state => "Fishy").should be_valid
+        create(:retro, :state => "Fishy")
         Retro.find_by_state("Fishy").should be_kind_of(Retro)
       end
 
-      xit "is invalid without a state" do
-        create(:retro, :state => nil).should be_invalid
+      it "is invalid without a state" do
+        build(:retro, :state => nil).should be_invalid
       end
 
       it "is has a date" do
-        create(:retro, :date => Date.new).should be_valid
+        build(:retro, :date => Date.new).should be_valid
       end
 
       it "is invalid without a date" do
