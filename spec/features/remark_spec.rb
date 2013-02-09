@@ -1,7 +1,7 @@
 require 'spec_helper'
 describe "Remarks" do
 
-  context "creating a remark" do
+  describe "creating a remark" do
     it "succeeds" do
       visit "/remarks/new"
       fill_in "Remark", :with => "This worked well"
@@ -15,6 +15,23 @@ describe "Remarks" do
       select('Negative', :from => 'Connotation')
       click_button "Save"
       page.should have_content "Title can't be blank"
+    end
+  end
+
+  describe "editing a remark" do
+    it "succeeds" do
+      visit "/remarks/new"
+      fill_in "Remark", :with => "Baa!"
+      select('Negative', :from => 'Connotation')
+      click_button "Save"
+
+      visit "/remarks"
+      click_link "Edit"
+      fill_in "Remark", :with => "Moo!"
+      click_button "Update"
+      page.should have_content "Remark was successfully updated"
+      page.should have_content "Moo!"
+
     end
   end
 
@@ -57,7 +74,6 @@ describe "Remarks" do
       page.should have_content "Drama"
       page.should have_content "Comedy"
       page.should have_content "Dramedy"
-
     end
   end
 end

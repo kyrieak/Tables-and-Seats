@@ -24,6 +24,20 @@ class RemarksController < ApplicationController
     end
   end
 
+  def edit
+    @remark = Remark.find_by_id(params[:id])
+  end
+
+  def update
+
+    @remark = Remark.find_by_id(params[:id])
+    if @remark.update_attributes(params[:remark])
+      redirect_to remarks_path, notice: 'Remark was successfully updated'
+    else
+      render 'edit'
+    end
+  end
+
   def destroy
     @remark = Remark.find_by_id(params[:id])
     if @remark
@@ -42,5 +56,4 @@ class RemarksController < ApplicationController
       end
     end
   end
-
 end
