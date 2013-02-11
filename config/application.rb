@@ -32,6 +32,12 @@ module Brimstone
       g.fixture_replacement :factory_girl, dir: "spec/factories"
     end
 
+    # see: https://coderwall.com/p/w3ghqq
+    config.exceptions_app = self.routes
+    config.exceptions_app = lambda do |env|
+      ApplicationController.action(:render_error).call(env)
+    end
+
     # Custom directories with classes and modules you want to be autoloadable.
     # config.autoload_paths += %W(#{config.root}/extras)
 

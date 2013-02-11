@@ -3,6 +3,9 @@ Brimstone::Application.routes.draw do
   root :to => "retro#index"
 
   resources :remarks
+  match '/404', :to => "application#render_error"
+  match '/500', :to => "application#render_error"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
