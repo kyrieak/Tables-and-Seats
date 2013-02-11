@@ -1,4 +1,5 @@
 class RemarksController < ApplicationController
+  respond_to :html
 
   def index
     @remarks = Remark.all
@@ -10,17 +11,11 @@ class RemarksController < ApplicationController
 
   def create
     @remark = Remark.new(params[:remark])
-
-    respond_to do |format|
-      if @remark.save
-        format.html do
-          redirect_to remarks_path, notice: 'Remark was successfully created'
-        end
-      else
-        format.html do
-          render 'new'
-        end
-      end
+    if @remark.save
+      flash[:notice] = 'Remark was successfully created'
+      respond_with @remark, location: remarks_path
+    else
+      respond_with @remark, :location => nil
     end
   end
 
@@ -29,31 +24,25 @@ class RemarksController < ApplicationController
   end
 
   def update
-
     @remark = Remark.find_by_id(params[:id])
     if @remark.update_attributes(params[:remark])
-      redirect_to remarks_path, notice: 'Remark was successfully updated'
+      flash[:notice] = 'Remark was successfully updated'
+      respond_with @remark, location: remarks_path
     else
-      render 'edit'
+      respond_with @remark, :location => nil
     end
   end
 
   def destroy
-    @remark = Remark.find_by_id(params[:id])
-    if @remark
-      if @remark.destroy
-        respond_to do |format|
-          format.html do
-            redirect_to remarks_path, notice: 'Remark was successfully deleted'
-          end
-        end
-      end
-    else
-      respond_to do |format|
-        format.html do
-          redirect_to remarks_path, alert: "Remark not found"
-        end
-      end
+    @remark = Remark.find(params[:id])
+    if @remark.destroy
+      flash[:notice] = 'Remark was successfully deleted'
+      respond_with @remark, location: remarks_path
     end
+  end
+
+  def show
+    @remark = Remark.find(params[:id])
+    respond_with @remark
   end
 end

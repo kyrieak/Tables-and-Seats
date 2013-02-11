@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  protect_from_forgery
+  protect_from_forgery :except => :render_error
   before_filter :set_app_name
   def set_app_name
     @app_name = "Remote Retro"
