@@ -11,11 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130211223005) do
+ActiveRecord::Schema.define(:version => 20130212004747) do
 
   create_table "assignments", :force => true do |t|
     t.integer  "user_id"
     t.integer  "role_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "memberships", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "team_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -63,16 +70,9 @@ ActiveRecord::Schema.define(:version => 20130211223005) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
-    t.integer  "team_id"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
-
-  add_foreign_key "remarks", "retros", :name => "remarks_retro_id_fk"
-
-  add_foreign_key "retros", "teams", :name => "retros_team_id_fk"
-
-  add_foreign_key "users", "teams", :name => "users_team_id_fk"
 
 end
