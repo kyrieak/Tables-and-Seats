@@ -1,8 +1,10 @@
 Brimstone::Application.routes.draw do
   devise_for :users
-  root :to => "retro#index"
+  root :to => "retros#index"
 
   resources :remarks
+  resources :retros
+
   match '/404', :to => "application#render_error"
   match '/500', :to => "application#render_error"
 

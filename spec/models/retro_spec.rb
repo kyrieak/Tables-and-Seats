@@ -25,8 +25,8 @@ describe Retro do
         Retro.find_by_state("Fishy").should be_kind_of(Retro)
       end
 
-      it "is invalid without a state" do
-        build(:retro, :state => nil).should be_invalid
+      it "is valid without a state" do
+        build(:retro, :state => nil).should be_valid
       end
 
       it "is has a date" do
