@@ -18,6 +18,21 @@ describe "Remarks" do
     end
   end
 
+  describe "showing a remark" do
+    it "succeeds" do
+      visit "/remarks/new"
+      fill_in "Remark", :with => "Spectacular"
+      select('Neutral', :from => 'Connotation')
+      click_button "Save"
+      page.should have_content "successfully created"
+      click_link "Show"
+      page.should have_content "Remark Detail"
+      page.should have_content "Spectacular"
+      page.should have_content "Neutral"
+      page.should have_content "Back"
+    end
+  end
+
   describe "editing a remark" do
     it "succeeds" do
       visit "/remarks/new"
