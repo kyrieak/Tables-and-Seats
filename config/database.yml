@@ -1,7 +1,7 @@
 common: &common
   adapter: postgresql
   username: retroapp
-  password: password # from psql setup, see Postgresql
+  host: localhost
 
 development:
   <<: *common

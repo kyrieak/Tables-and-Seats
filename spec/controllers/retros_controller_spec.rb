@@ -11,6 +11,6 @@ describe RetrosController do
   end
 
   describe "#new" do
-    
+
   end
 end
