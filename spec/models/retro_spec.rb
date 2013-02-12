@@ -14,7 +14,15 @@ describe Retro do
     end
 
   end
-
+  
+  context "creation" do
+    it "creates the record in the database" do
+      expect {
+        retro.save.should be_true
+      }.to change(Retro, :count).by(1)
+    end
+  end
+  
   context "validations" do
     it "has a name" do
         build(:retro, :name => "Elephant").should be_valid
@@ -25,8 +33,8 @@ describe Retro do
         Retro.find_by_state("Fishy").should be_kind_of(Retro)
       end
 
-      it "is invalid without a state" do
-        build(:retro, :state => nil).should be_invalid
+      it "is valid without a state" do
+        build(:retro, :state => nil).should be_valid
       end
 
       it "is has a date" do

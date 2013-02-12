@@ -1,10 +1,16 @@
 require 'spec_helper'
 
-describe RetroController do
+describe RetrosController do
   describe "#index" do
-    it "returns :success" do
+    before do
       get :index
+    end
+    it "exists" do
       response.status.should eq 200
     end
+  end
+
+  describe "#new" do
+
   end
 end

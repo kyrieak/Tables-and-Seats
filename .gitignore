@@ -14,9 +14,13 @@
 /log/*.log
 /tmp
 
+# editors & environment files
 .idea
 .rvmrc
+
+# testing files
 coverage
+.rspec
 
 # ignore local postgres configuration files
 .profile

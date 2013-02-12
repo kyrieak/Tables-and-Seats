@@ -4,6 +4,6 @@ FactoryGirl.define do
   factory :retro do
     state "MyString"
     date "2013-02-01"
-    voting_allowed false
+    voting_allowed true
   end
 end

@@ -1,0 +1,18 @@
+<%= form_for @retro do |f| %>
+  <%= f.error_messages %>
+  <%= f.label :name, 'Retro Name' %>
+  <%= f.text_field :name %>
+  <%= f.label :date, 'Date' %>
+  <%= f.date_select :date, :default => Date.today.to_time %>
+  <%= f.label :state, 'State' %>
+  <%= f.text_field :state %>
+  <br>
+  Voting allowed?
+  <br>
+  <%= f.label :voting_allowed, "Yes" %>
+  <%= f.radio_button :voting_allowed, "true", :checked => true %>
+  <%= f.label :voting_allowed, "No" %>
+  <%= f.radio_button :voting_allowed, "false" %>
+  <br>
+  <%= f.submit "Submit" %>
+<% end %>
