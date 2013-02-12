@@ -1,0 +1,8 @@
+Details of the remark
+<%= form_for @remark do |f| %>
+      <%= f.error_messages %>
+    <%= f.label :title, "Remark" %>
+    <%= f.text_field :title, :disabled=>true %><br>
+    <%= f.label "Connotation" %>
+    <%= f.collection_select(:connotation_id, Connotation.all, :id, :name, { :prompt => 'Select...'})  %><br>
+<% end %>

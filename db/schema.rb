@@ -75,4 +75,8 @@ ActiveRecord::Schema.define(:version => 20130212004747) do
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 
+  add_foreign_key "remarks", "retros", :name => "remarks_retro_id_fk"
+
+  add_foreign_key "retros", "teams", :name => "retros_team_id_fk"
+
 end

@@ -5,6 +5,7 @@
             <td><%= remark.title %></td>
             <td><%= link_to "Delete", remark_path(remark), :method => :delete, :class => "remark_delete" %></td>
             <td><%= link_to "Edit", edit_remark_path(remark) %></td>
+            <td><%= link_to "Show", remark_path(remark) %></td>
       <% end %>
   <% else %>
      There are no remarks in this retrospective

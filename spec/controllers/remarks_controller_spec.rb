@@ -52,7 +52,7 @@ describe RemarksController do
     describe "failure" do
 
       before do
-        put :update, { :id => remark.id, :remark => {:title => nil} }
+        put :update, {:id => remark.id, :remark => {:title => nil}}
       end
 
       it "redirects to the index page on success" do
@@ -66,41 +66,66 @@ describe RemarksController do
     end
   end
 
-  describe "#delete" do
-
-    describe "in general" do
-      it("changes the remark count") do
-        expect {
-          delete :destroy, {:id => remark}
-        }.to change(Remark, :count).by(-1)
-      end
-    end
+  describe "#show" do
 
     describe "success" do
 
       before do
-        delete :destroy, {:id => remark}
+        post :create, {:remark => {:title => "Remarkable", :connotation_id => 1}}
       end
 
-      it "redirects to the index page on success" do
-        response.should redirect_to remarks_path
+      it "renders the #show view" do
+        get :show, id: remark.id
+        response.should render_template :show
       end
-
-      it "sets the flash message" do
-        flash[:notice].should include "successfully deleted"
-      end
-
     end
 
     describe "failure" do
 
       it "raises an exception" do
         expect {
-          delete :destroy, {:id => '121222222'}
+          get :show, id: "AnInvalidID"
         }.to raise_error ActiveRecord::RecordNotFound
       end
-
     end
 
   end
+
+describe "#delete" do
+
+  describe "in general" do
+    it("changes the remark count") do
+      expect {
+        delete :destroy, {:id => remark}
+      }.to change(Remark, :count).by(-1)
+    end
+  end
+
+  describe "success" do
+
+    before do
+      delete :destroy, {:id => remark}
+    end
+
+    it "redirects to the index page on success" do
+      response.should redirect_to remarks_path
+    end
+
+    it "sets the flash message" do
+      flash[:notice].should include "successfully deleted"
+    end
+
+  end
+
+  describe "failure" do
+
+    it "raises an exception" do
+      expect {
+        delete :destroy, {:id => '121222222'}
+      }.to raise_error ActiveRecord::RecordNotFound
+    end
+
+  end
+
+end
 end
