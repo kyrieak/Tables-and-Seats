@@ -36,7 +36,7 @@ describe RemarksController do
     describe "success" do
 
       before do
-        put :update, {:id => remark.id, :remark => {:title => "Remark", :connotation_id => 2}}
+        put :update, {:id => remark.id, :remark => {:title => "Remark", :explanation => "Why I said this", :connotation_id => 2}}
       end
 
       it "redirects to the index page on success" do

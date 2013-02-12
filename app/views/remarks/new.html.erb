@@ -1,9 +1,13 @@
 Create a remark
 <%= form_for @remark do |f| %>
-  <%= f.error_messages %>
-  <%= f.label :title, "Remark" %>
-  <%= f.text_field :title %><br>
-  <%= f.label :connotation_id %>
-  <%= f.collection_select(:connotation_id, Connotation.all, :id, :name, { :prompt => 'Select...'})  %><br>
-  <%= f.submit "Save" %>
+      <%= f.error_messages %>
+    <%= f.label :title, "Remark" %>
+    <%= f.text_field :title %><br>
+
+    <%= f.label :explanation, "Explanation" %>
+    <%= f.text_field :explanation %><br>
+
+    <%= f.label :connotation_id %>
+    <%= f.collection_select(:connotation_id, Connotation.all, :id, :name, {:prompt => 'Select...'}) %><br>
+    <%= f.submit "Save" %>
 <% end %>

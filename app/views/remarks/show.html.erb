@@ -1,12 +1,14 @@
 <h3>Remark Details</h3>
 <div class="row">
-  <div class="span6">
+  <div class="span8">
     <br>
     <table class="table table-bordered table-striped">
       <th>Title</th>
+      <th>Explanation</th>
       <th>Connotation</th>
       <tr>
         <td><%= @remark.try(:title) %></td>
+        <td><%= @remark.try(:explanation) %></td>
         <td><%= @remark.try(:connotation).try(:name) %></td>
       </tr>
     </table>

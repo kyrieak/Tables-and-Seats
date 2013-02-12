@@ -5,6 +5,7 @@ describe "Remarks" do
     it "succeeds" do
       visit "/remarks/new"
       fill_in "Remark", :with => "This worked well"
+      fill_in "Explanation", :with => "Because we all worked as a team"
       select('Negative', :from => 'Connotation')
       click_button "Save"
       page.should have_content "successfully created"
@@ -22,12 +23,14 @@ describe "Remarks" do
     it "succeeds" do
       visit "/remarks/new"
       fill_in "Remark", :with => "Spectacular"
+      fill_in "Explanation", :with => "Splendiferous"
       select('Neutral', :from => 'Connotation')
       click_button "Save"
       page.should have_content "successfully created"
       click_link "Show"
       page.should have_content "Remark Detail"
       page.should have_content "Spectacular"
+      page.should have_content "Splendiferous"
       page.should have_content "Neutral"
       page.should have_content "Back"
     end
@@ -37,12 +40,14 @@ describe "Remarks" do
     it "succeeds" do
       visit "/remarks/new"
       fill_in "Remark", :with => "Baa!"
+      fill_in "Explanation", :with => "Humbug."
       select('Negative', :from => 'Connotation')
       click_button "Save"
 
       visit "/remarks"
       click_link "Edit"
       fill_in "Remark", :with => "Moo!"
+      fill_in "Explanation", :with => "Hamburger"
       click_button "Update"
       page.should have_content "Remark was successfully updated"
       page.should have_content "Moo!"
