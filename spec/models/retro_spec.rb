@@ -14,7 +14,7 @@ describe Retro do
     end
 
   end
-  
+
   context "validations" do
     it "has a name" do
         build(:retro, :name => "Elephant").should be_valid
@@ -37,8 +37,14 @@ describe Retro do
         build(:retro, :date => nil).should_not be_valid
       end
   end
-  
-  
+
+  context "with a team" do
+    let(:team) { create :team }
+    let(:retro_with_team) { create(:retro, :team => team) }
+    it "has a team" do
+      retro_with_team.team.should eq team
+    end
+  end
 
   it "allows voting by default"
   it "does not allow voting when the state is closed"
