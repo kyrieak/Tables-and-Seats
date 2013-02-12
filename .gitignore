@@ -17,3 +17,7 @@
 .idea
 .rvmrc
 coverage
+
+# ignore local postgres configuration files
+.profile
+start
