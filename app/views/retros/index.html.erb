@@ -1,0 +1,4 @@
+<% @retros.each do |retro| %>
+  <%= @retro.try(:name) %>
+<% end %>
+<%= link_to 'Add a retro', new_retro_path %>
