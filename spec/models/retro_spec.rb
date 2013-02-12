@@ -57,4 +57,41 @@ describe Retro do
   it "allows voting by default"
   it "does not allow voting when the state is closed"
 
+  context "editing" do
+    let(:team){ create(:team) }
+    let(:team_two){ create(:team) }
+    before do
+      create(:retro, :name => "First Retro",
+             :state => "Fishy",
+             :date => Date.today,
+             :voting_allowed => false,
+             :team_id => team.id
+      )
+
+    end
+    it "allows changing the name" do
+      retro.update_attributes!({ :name => "Nemo" })
+      retro.name.should eq("Nemo")
+    end
+
+    it "allows editing of state" do
+      retro.update_attributes!({ :state => "Open" })
+      retro.state.should eq("Open")
+    end
+
+    it "allows editing of date" do
+      retro.update_attributes!({ :date => Date.tomorrow })
+      retro.date.should eq(Date.tomorrow)
+    end
+
+    it "allows toggling of 'voting allowed'" do
+      retro.update_attributes!({ :voting_allowed => true })
+      retro.voting_allowed.should be_true
+    end
+    it "allows you to change team" do
+      retro.update_attributes!({ :team_id => team_two.id })
+      retro.team.id.should eq team_two.id
+    end
+
+  end
 end
