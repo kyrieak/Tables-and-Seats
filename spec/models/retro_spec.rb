@@ -14,7 +14,15 @@ describe Retro do
     end
 
   end
-
+  
+  context "creation" do
+    it "creates the record in the database" do
+      expect {
+        retro.save.should be_true
+      }.to change(Retro, :count).by(1)
+    end
+  end
+  
   context "validations" do
     it "has a name" do
         build(:retro, :name => "Elephant").should be_valid
