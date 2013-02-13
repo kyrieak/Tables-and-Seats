@@ -43,7 +43,7 @@ gem "haml-rails"
 gem "dynamic_form"
 gem "active_hash"
 gem 'simplecov', :require => false, :group => :test
-
+gem 'immigrant'
 group :development, :test do
   gem "rspec-rails"
   gem "factory_girl_rails"
