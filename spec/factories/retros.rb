@@ -6,5 +6,8 @@ FactoryGirl.define do
     state "MyString"
     date "2013-02-01"
     voting_allowed true
+    factory :retro_with_remarks do
+      remarks { Array.new(3) { FactoryGirl.build(:remark) } }
+    end
   end
 end

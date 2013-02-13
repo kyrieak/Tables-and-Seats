@@ -46,10 +46,20 @@ feature "Retro Features" do
     page.should have_content "Retro update unsuccessful"
   end
 
-  scenario "deleting a retro" do
+  scenario "deleting a retro that has no remarks yet" do
     FactoryGirl.create(:retro, :name => "Retro To Delete")
     visit retros_path
     click_link "Delete"
     page.should have_content "successfully deleted"
   end
+
+  scenario "deleting a retro that has associated remarks" do
+    FactoryGirl.create(:retro_with_remarks, :name => "Retro with Remarks")
+    visit retros_path
+    page.should have_content "Retro with Remarks"
+    click_link "Delete"
+    page.should have_content "successfully deleted"
+    page.should_not have_content "Retro with Remarks"
+  end
+
 end
