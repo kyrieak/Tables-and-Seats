@@ -1,7 +1,7 @@
 class RetrosController < ApplicationController
   respond_to :html
   def index
-    @retros = Retro.all
+    @retros = Retro.all.sort{ |r_1, r_2| r_1.date <=> r_2.date }
   end
 
   def new
@@ -24,7 +24,6 @@ class RetrosController < ApplicationController
 
   def show
     @retro = Retro.find(params[:id])
-    respond_with @retro
   end
 
   def update

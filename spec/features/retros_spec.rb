@@ -47,9 +47,17 @@ feature "Retro Features" do
   end
 
   scenario "deleting a retro" do
-    FactoryGirl.create(:retro, :name => "Retro To Delete")
+    FactoryGirl.create(:retro, :name => "Retro")
     visit retros_path
     click_link "Delete"
     page.should have_content "successfully deleted"
+  end
+
+  scenario "showing a retro" do
+    retro = FactoryGirl.create(:retro, :name => "My Retro")
+    visit retros_path
+    page.should have_content"#{retro.name}"
+    click_link "#{retro.name}"
+    page.should have_content "#{retro.name}"
   end
 end
