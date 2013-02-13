@@ -1,0 +1,18 @@
+- stylesheet_link_tag "remarks"
+
+h2
+  = @retro.name
+
+- groups = @retro.remarks.group_by{ |r| r.connotation_id }
+
+table
+  tr
+    - (1..3).to_a.reverse.each do |c|
+    td.connotation_column
+      table
+        th
+          = remark_header[c]
+          - groups[c].each do |r|
+          tr
+            td
+              = remark_format(r)
