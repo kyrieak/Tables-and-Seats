@@ -9,6 +9,7 @@
       <th>State</th>
       <th>Voting allowed</th>
       <th>Edit</th>
+      <th>Delete</th>
       <% @retros.each do |retro| %>
         <tr>
           <td><%= retro.try(:name) %></td>
@@ -16,6 +17,7 @@
           <td><%= retro.try(:state) %></td>
           <td><%= retro.try(:voting_allowed) %></td>
           <td><%= link_to "Edit", edit_retro_path(retro) %></td>
+          <td><%= link_to "Delete", retro_path(retro), :method => :delete, :class => "retro_delete" %></td>
         </tr>
       <% end %>
     </table>

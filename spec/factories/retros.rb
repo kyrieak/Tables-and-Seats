@@ -2,6 +2,7 @@
 
 FactoryGirl.define do
   factory :retro do
+    name "Default Retro"
     state "MyString"
     date "2013-02-01"
     voting_allowed true

@@ -4,4 +4,5 @@ class Retro < ActiveRecord::Base
   attr_accessible :date, :state, :voting_allowed, :name, :team_id
 
   validates :date, :presence => true
+  validates :name, :presence => true
 end

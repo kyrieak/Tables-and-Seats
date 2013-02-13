@@ -22,6 +22,11 @@ class RetrosController < ApplicationController
     @retro = Retro.find(params[:id])
   end
 
+  def show
+    @retro = Retro.find(params[:id])
+    respond_with @retro
+  end
+
   def update
     @retro = Retro.find(params[:id])
     @retro.update_attributes(params[:retro])
@@ -30,6 +35,14 @@ class RetrosController < ApplicationController
       respond_with(@retro, location: retros_path)
     else
       flash[:alert] = "Retro update unsuccessful"
+    end
+  end
+
+  def destroy
+    @retro = Retro.find(params[:id])
+    if @retro.destroy
+      flash[:notice] = 'Retro was successfully deleted'
+      respond_with @retro, location: retros_path
     end
   end
 end
