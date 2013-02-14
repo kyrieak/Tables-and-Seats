@@ -16,6 +16,7 @@
 
 #Pre-compiled assets
 /public/assets
+.sass-cache/
 
 # editors & environment files
 .idea
