@@ -24,6 +24,8 @@ class RetrosController < ApplicationController
 
   def show
     @retro = Retro.find(params[:id])
+    @connotation_ids = @retro.connotations.map(&:id)
+    @groups = @retro.remarks.group_by{ |r| r.connotation_id }
   end
 
   def update

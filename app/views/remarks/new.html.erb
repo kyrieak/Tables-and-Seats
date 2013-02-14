@@ -1,6 +1,7 @@
 Create a remark
-<%= form_for @remark do |f| %>
-      <%= f.error_messages %>
+<%= form_for [:retro, @remark] do |f| %>
+    <%= f.error_messages %>
+    <%= f.hidden_field :retro_id %>
     <%= f.label :title, "Remark" %>
     <%= f.text_field :title %><br>
 

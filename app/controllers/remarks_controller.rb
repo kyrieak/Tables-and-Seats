@@ -6,16 +6,17 @@ class RemarksController < ApplicationController
   end
 
   def new
-    @remark = Remark.new
+    @retro = Retro.find_by_id(params[:retro_id])
+    @remark = @retro.remarks.build
   end
 
   def create
     @remark = Remark.new(params[:remark])
-    if @remark.save
+    if @remark.save && @remark.retro_id
       flash[:notice] = 'Remark was successfully created'
-      respond_with @remark, location: remarks_path
+      redirect_to retro_path(@remark.retro_id)
     else
-      respond_with @remark, :location => nil
+      render :new, :retro_id => params[:retro_id]
     end
   end
 
@@ -27,7 +28,7 @@ class RemarksController < ApplicationController
     @remark = Remark.find_by_id(params[:id])
     if @remark.update_attributes(params[:remark])
       flash[:notice] = 'Remark was successfully updated'
-      respond_with @remark, location: remarks_path
+      redirect_to retro_path(@remark.retro_id)
     else
       respond_with @remark, :location => nil
     end
@@ -37,7 +38,7 @@ class RemarksController < ApplicationController
     @remark = Remark.find(params[:id])
     if @remark.destroy
       flash[:notice] = 'Remark was successfully deleted'
-      respond_with @remark, location: remarks_path
+      redirect_to :back
     end
   end
 

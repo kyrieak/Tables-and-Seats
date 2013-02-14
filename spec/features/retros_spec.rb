@@ -49,16 +49,19 @@ feature "Retro Features" do
   scenario "deleting a retro that has no remarks yet" do
     FactoryGirl.create(:retro, :name => "Retro To Delete")
     visit retros_path
-    click_link "Delete"
+    page.first(".retro_delete").click
     page.should have_content "successfully deleted"
   end
 
   scenario "showing a retro" do
-    retro = FactoryGirl.create(:retro, :name => "My Retro")
+    retro = FactoryGirl.create(:retro_with_remarks, :name => "My Retro")
     visit retros_path
-    page.should have_content"#{retro.name}"
-    click_link "#{retro.name}"
-    page.should have_content "#{retro.name}"
+    retro.name.should_not be_nil
+    page.should have_content retro.name
+    click_link retro.name
+    page.should have_content retro.name
+    page.should have_content retro.remarks.first.title
+    page.should have_content retro.remarks.first.explanation
   end
 
   scenario "deleting a retro that has associated remarks" do
@@ -70,4 +73,10 @@ feature "Retro Features" do
     page.should_not have_content "Retro with Remarks"
   end
 
+  scenario "adding remarks to a retro" do
+    retro = FactoryGirl.create(:retro, :name => "New Retro")
+    visit retro_path retro
+    click_link "Add a remark"
+    
+  end
 end

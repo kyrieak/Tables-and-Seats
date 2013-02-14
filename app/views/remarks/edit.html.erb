@@ -1,5 +1,5 @@
 Edit the remark
-<%= form_for @remark do |f| %>
+<%= form_for [:retro, @remark] do |f| %>
       <%= f.error_messages %>
     <%= f.label :title, "Remark" %>
     <%= f.text_field :title %><br>

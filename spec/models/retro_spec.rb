@@ -109,4 +109,10 @@ describe Retro do
 
   end
 
+  describe "connotations" do
+    it "returns the connotations relevant to the retro" do
+      retro.connotations.map{ |c| c.name}.should eq ["Positive", "Neutral", "Negative"]
+    end
+  end
+
 end

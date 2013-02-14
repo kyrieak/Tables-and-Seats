@@ -1,18 +1,24 @@
-- stylesheet_link_tag "remarks"
-
 h2
   = @retro.name
-
-- groups = @retro.remarks.group_by{ |r| r.connotation_id }
-
-table
-  tr
-    - (1..3).to_a.reverse.each do |c|
-    td.connotation_column
-      table
-        th
-          = remark_header[c]
-          - groups[c].each do |r|
+.create_new_remark
+  = link_to "Add a remark", new_retro_remark_path(@retro)
+  table
+    tr
+      - for connotation in @connotation_ids do
+        td.connotation_column
+        table
           tr
-            td
-              = remark_format(r)
+            th
+              = remark_header(connotation)
+              - if @groups[connotation]
+                - for remark in @groups[connotation] do
+                    tr
+                      td
+                        = remark.title
+                        br
+                        =' link_to "Show", retro_remark_path(:retro_id => @retro, :id => remark)
+                        =' link_to "Edit", edit_retro_remark_path(:retro_id => @retro, :id => remark)
+                        = link_to "Delete", retro_remark_path(:retro_id => @retro, :id => remark), :method =>  "delete", :class => "remark_delete"
+
+                        hr
+                        = remark.explanation

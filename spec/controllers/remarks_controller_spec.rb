@@ -1,17 +1,18 @@
 require 'spec_helper'
 
 describe RemarksController do
-  let!(:remark) { create :remark }
+  let!(:retro) { create :retro }
+  let!(:remark) { create :remark, :retro_id => retro.id }
 
   describe "#create" do
     describe "success" do
 
       before do
-        post :create, {:remark => {:title => "Remark", :connotation_id => 1}}
+        post :create, {:retro_id => retro.id, :remark => {:title => "Remark", :connotation_id => 1, :retro_id => retro.id }}
       end
 
-      it "redirects to index page" do
-        response.should redirect_to remarks_path
+      it "redirects to the retro show page" do
+        response.should redirect_to retro_path(Remark.last.retro_id)
       end
 
       it "sets the flash message" do
@@ -21,7 +22,7 @@ describe RemarksController do
 
     describe "failure" do
       before do
-        post :create, {:remark => {:title => nil}}
+        post :create, {:retro_id => retro.id, :remark => {:title => nil, :retro_id => retro.id}}
       end
 
       it "re-renders the new page" do
@@ -36,11 +37,11 @@ describe RemarksController do
     describe "success" do
 
       before do
-        put :update, {:id => remark.id, :remark => {:title => "Remark", :explanation => "Why I said this", :connotation_id => 2}}
+        put :update, {:retro_id => retro.id,  :id => remark.id, :remark => {:title => "Remark", :explanation => "Why I said this", :connotation_id => 2}}
       end
 
       it "redirects to the index page on success" do
-        response.should redirect_to remarks_path
+        response.should redirect_to retro_path(retro)
       end
 
       it "sets the flash message" do
@@ -52,7 +53,7 @@ describe RemarksController do
     describe "failure" do
 
       before do
-        put :update, {:id => remark.id, :remark => {:title => nil}}
+        put :update, {:retro_id => retro.id, :id => remark.id, :remark => {:title => nil}}
       end
 
       it "redirects to the index page on success" do
@@ -69,14 +70,14 @@ describe RemarksController do
   describe "#show" do
 
     describe "success" do
-
+     
       before do
-        post :create, {:remark => {:title => "Remarkable", :connotation_id => 1}}
+        create :retro_with_remarks
       end
 
       it "renders the #show view" do
-        get :show, id: remark.id
-        response.should render_template :show
+        get :show, :retro_id => retro.id, id: remark.id
+        response.status.should eq 200
       end
     end
 
@@ -84,7 +85,7 @@ describe RemarksController do
 
       it "raises an exception" do
         expect {
-          get :show, id: "AnInvalidID"
+          get :show, :retro_id => retro.id, id: "AnInvalidID"
         }.to raise_error ActiveRecord::RecordNotFound
       end
     end
@@ -93,10 +94,13 @@ describe RemarksController do
 
 describe "#delete" do
 
+  before do
+    request.env["HTTP_REFERER"] = retro_remarks_path(retro)
+  end
   describe "in general" do
     it("changes the remark count") do
       expect {
-        delete :destroy, {:id => remark}
+        delete :destroy, {:retro_id => retro.id, :id => remark}
       }.to change(Remark, :count).by(-1)
     end
   end
@@ -104,11 +108,11 @@ describe "#delete" do
   describe "success" do
 
     before do
-      delete :destroy, {:id => remark}
+      delete :destroy, {:retro_id => retro.id, :id => remark}
     end
 
     it "redirects to the index page on success" do
-      response.should redirect_to remarks_path
+      response.should redirect_to retro_remarks_path
     end
 
     it "sets the flash message" do
@@ -121,7 +125,7 @@ describe "#delete" do
 
     it "raises an exception" do
       expect {
-        delete :destroy, {:id => '121222222'}
+        delete :destroy, {:retro_id => retro.id, :id => '121222222'}
       }.to raise_error ActiveRecord::RecordNotFound
     end
 

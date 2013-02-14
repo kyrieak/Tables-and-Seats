@@ -1,9 +1,16 @@
 require 'spec_helper'
 describe "Remarks" do
-
+  before do
+    def retro
+      @retro ||= FactoryGirl.create :retro
+    end
+    def remark
+      @remark ||= create :remark, :retro_id => retro.id
+    end
+  end
   describe "creating a remark" do
     it "succeeds" do
-      visit "/remarks/new"
+      visit "/retros/#{retro.id}/remarks/new"
       fill_in "Remark", :with => "This worked well"
       fill_in "Explanation", :with => "Because we all worked as a team"
       select('Negative', :from => 'Connotation')
@@ -11,7 +18,7 @@ describe "Remarks" do
       page.should have_content "successfully created"
     end
     it "returns an error message on failure" do
-      visit "/remarks/new"
+      visit "/retros/#{retro.id}/remarks/new"
       fill_in "Remark", :with => ""
       select('Negative', :from => 'Connotation')
       click_button "Save"
@@ -21,7 +28,7 @@ describe "Remarks" do
 
   describe "showing a remark" do
     it "succeeds" do
-      visit "/remarks/new"
+      visit "/retros/#{retro.id}/remarks/new"
       fill_in "Remark", :with => "Spectacular"
       fill_in "Explanation", :with => "Splendiferous"
       select('Neutral', :from => 'Connotation')
@@ -38,13 +45,7 @@ describe "Remarks" do
 
   describe "editing a remark" do
     it "succeeds" do
-      visit "/remarks/new"
-      fill_in "Remark", :with => "Baa!"
-      fill_in "Explanation", :with => "Humbug."
-      select('Negative', :from => 'Connotation')
-      click_button "Save"
-
-      visit "/remarks"
+      visit "/retros/#{retro.id}/remarks/#{remark.id}"
       click_link "Edit"
       fill_in "Remark", :with => "Moo!"
       fill_in "Explanation", :with => "Hamburger"
@@ -57,7 +58,7 @@ describe "Remarks" do
 
   describe "deleting a remark" do
     it "succeeds" do
-      visit "/remarks"
+      visit "/retros/#{retro.id}/remarks"
       click_link "Add a remark"
       fill_in "Remark", :with => "This worked well"
       select('Negative', :from => 'Connotation')
@@ -68,13 +69,15 @@ describe "Remarks" do
   end
 
   describe "listing remarks" do
+    let!(:retro){ create(:retro) }
+
     it "shows empty lists correctly" do
-      visit "/remarks"
+      visit "/retros/#{retro.id}/remarks"
       page.should have_content "There are no remarks"
     end
 
     it "shows non-empty lists correctly" do
-      visit "/remarks"
+      visit "/retros/#{retro.id}/remarks"
       click_link "Add a remark"
       fill_in "Remark", :with => "Comedy"
       select('Negative', :from => 'Connotation')

@@ -6,10 +6,12 @@
       <th>Title</th>
       <th>Explanation</th>
       <th>Connotation</th>
+      <th>Edit</th>
       <tr>
         <td><%= @remark.try(:title) %></td>
         <td><%= @remark.try(:explanation) %></td>
         <td><%= @remark.try(:connotation).try(:name) %></td>
+        <td><%= link_to "Edit", edit_retro_remark_path(:retro_id => @remark.retro_id, :id => @remark)%></td>
       </tr>
     </table>
   </div>

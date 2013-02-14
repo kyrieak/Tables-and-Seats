@@ -5,4 +5,9 @@ class Retro < ActiveRecord::Base
 
   validates :date, :presence => true
   validates :name, :presence => true
+
+  def connotations
+    Connotation.all
+  end
+
 end
