@@ -47,6 +47,7 @@ gem "active_hash"
 gem 'simplecov', :require => false, :group => :test
 gem 'immigrant'
 gem 'slim'
+gem 'bootstrap-datepicker-rails'
 
 group :development, :test do
   gem "rspec-rails"
