@@ -62,6 +62,7 @@ group :development do
   gem 'rb-fsevent', :require => false
   gem 'rb-fchange', :require => false
   gem 'guard-rspec'
+  gem 'guard-livereload'
   gem 'database_cleaner'
 end
 
