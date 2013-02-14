@@ -20,6 +20,7 @@
 # editors & environment files
 .idea
 .rvmrc
+.DS_Store
 
 # testing files
 coverage
