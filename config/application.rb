@@ -82,6 +82,8 @@ module Brimstone
 
     config.assets.precompile += %w( bootstrap.css bootstrap-responsive.css )
 
+    config.assets.paths << Rails.root.join("lib", "assets", "stylesheets", "bourbon")
+
     # Enable the asset pipeline
     config.assets.enabled = true
 
