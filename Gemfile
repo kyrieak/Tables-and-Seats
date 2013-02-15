@@ -65,6 +65,7 @@ group :development do
   gem 'guard-rspec'
   gem 'guard-livereload'
   gem 'database_cleaner'
+  gem "rails-erd"
 end
 
 group :test do
