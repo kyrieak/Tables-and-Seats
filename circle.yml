@@ -3,9 +3,3 @@ machine:
     America/Los_Angeles
   ruby:
     version: 1.9.3-p0-falcon
-deployment:
-    production:
-      branch: master
-      commands:
-        - git push git@heroku.com:remote-retro.git $CIRCLE_SHA1:master
-        - heroku run rake db:migrate --app remote-retro
