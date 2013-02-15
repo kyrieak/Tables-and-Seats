@@ -1,18 +1,38 @@
-<%= form_for @retro do |f| %>
-  <%= f.error_messages %>
-  <%= f.label :name, 'Retro Name' %>
-  <%= f.text_field :name %>
-  <%= f.label :date, 'Date' %>
-  <%= f.date_select :date, :default => Date.today.to_time %>
-  <%= f.label :state, 'State' %>
-  <%= f.text_field :state %>
-  <br>
-  Voting allowed?
-  <br>
-  <%= f.label :voting_allowed, "Yes" %>
-  <%= f.radio_button :voting_allowed, "true", :checked => true %>
-  <%= f.label :voting_allowed, "No" %>
-  <%= f.radio_button :voting_allowed, "false" %>
-  <br>
-  <%= f.submit "Submit" %>
+<%= form_for @retro, {:html => {:class => "form inline_form form-horizontal"}} do |f| %>
+  <fieldset>
+    <div class="control-group">
+      <div class="controls">
+        <span class="help-block"><%= f.error_messages %></span>
+      </div>
+    </div>
+    <div class="control-group">
+      <div class="controls">
+        <%= f.label :name, 'Retro Name' %>
+        <%= f.text_field :name %>
+        <br>
+        <%= f.label :date, 'Date' %>
+        <%= f.text_field :date, { :value => Date.today.to_date, 'data-behaviour' => 'datepicker'} %>
+        <br>
+        <%= f.label :state, 'State (optional)' %>
+        <%= f.text_field :state %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <div class="controls">
+        <span class="help-block">Voting allowed?</span>
+        <%= f.label :voting_allowed, "Yes", {class: "inline radio"} %>
+        <%= f.radio_button :voting_allowed, "true", :checked => true %>
+        <%= f.label :voting_allowed, "No", {class: "inline radio"} %>
+        <%= f.radio_button :voting_allowed, "false" %>
+      </div>
+    </div>
+    <br>
+
+    <div class="control-group">
+      <div class="controls">
+        <%= f.submit "Submit", {:class => "btn btn-primary"}%>
+      </div>
+    </div>
+  </fieldset>
 <% end %>
