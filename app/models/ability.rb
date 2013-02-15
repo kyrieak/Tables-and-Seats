@@ -1,4 +1,5 @@
-class Ability include CanCan::Ability
+class Ability
+include CanCan::Ability
 
   def initialize(user)
     # Define abilities for the passed in user here. For example:
@@ -22,4 +23,5 @@ class Ability include CanCan::Ability
     #
     # See the wiki for details:
     # https://github.com/ryanb/cancan/wiki/Defining-Abilities
-  end end
+  end
+end
