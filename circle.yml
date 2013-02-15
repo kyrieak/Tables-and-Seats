@@ -1,0 +1,11 @@
+machine:
+  timezone:
+    America/Los_Angeles
+  ruby:
+    version: 1.9.3-p0-falcon
+deployment:
+    production:
+      branch: master
+      commands:
+        - git push git@heroku.com:sheltered-earth-6457.git $CIRCLE_SHA1:master
+        - heroku run rake db:migrate
