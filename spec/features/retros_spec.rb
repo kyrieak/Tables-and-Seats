@@ -77,6 +77,6 @@ feature "Retro Features" do
     retro = FactoryGirl.create(:retro, :name => "New Retro")
     visit retro_path retro
     click_link "Add a remark"
-    
+
   end
 end
