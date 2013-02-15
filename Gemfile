@@ -13,6 +13,7 @@ group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'bootstrap-sass', '~> 2.2.2.0'
+  gem 'bourbon'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
@@ -46,6 +47,7 @@ gem "active_hash"
 gem 'simplecov', :require => false, :group => :test
 gem 'immigrant'
 gem 'slim'
+gem 'bootstrap-datepicker-rails'
 
 group :development, :test do
   gem "rspec-rails"
@@ -61,7 +63,9 @@ group :development do
   gem 'rb-fsevent', :require => false
   gem 'rb-fchange', :require => false
   gem 'guard-rspec'
+  gem 'guard-livereload'
   gem 'database_cleaner'
+  gem "rails-erd"
 end
 
 group :test do

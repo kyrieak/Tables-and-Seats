@@ -20,7 +20,8 @@ module Brimstone
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
-
+    require 'bootstrap-sass'
+    
     config.generators do |g|
       g.test_framework :rspec,
         fixtures: true,
@@ -78,6 +79,10 @@ module Brimstone
 
     # Dont initialize the app when precompiling assets
     config.assets.initialize_on_precompile = false
+
+    config.assets.precompile += %w( bootstrap.css bootstrap-responsive.css )
+
+    config.assets.paths << Rails.root.join("lib", "assets", "stylesheets", "bourbon")
 
     # Enable the asset pipeline
     config.assets.enabled = true

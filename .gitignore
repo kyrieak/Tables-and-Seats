@@ -13,14 +13,17 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+erd.pdf
 
 #Pre-compiled assets
 /public/assets
+.sass-cache/
 
 # editors & environment files
 .idea
 .rvmrc
 .DS_Store
+.powenv
 
 # testing files
 coverage
