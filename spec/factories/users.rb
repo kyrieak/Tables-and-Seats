@@ -6,5 +6,15 @@ FactoryGirl.define do
       "email#{n}@factory.com"
     end
     password "marbledygurk"
+
+    trait :no_email do
+      email nil
+    end
+
+    trait :no_password do
+      password nil
+    end
+
   end
+
 end
