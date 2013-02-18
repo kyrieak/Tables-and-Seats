@@ -3,6 +3,12 @@ machine:
     America/Los_Angeles
   ruby:
     version: 1.9.3-p0-falcon
+dependencies:
+  post:
+    - npm install -g mocha
+test:
+  post:
+    - mocha
 deployment:
     production:
       branch: master
