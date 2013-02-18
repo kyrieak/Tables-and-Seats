@@ -71,3 +71,11 @@ end
 group :test do
   gem "capybara"
 end
+
+group :code_quality do
+  gem "cane"
+  gem "flog"
+  gem "flay"
+  gem "rails_best_practices"
+  gem "bullet"
+end
