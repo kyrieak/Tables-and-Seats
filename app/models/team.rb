@@ -1,3 +1,4 @@
+# Members belong to teams to participate in retros
 class Team < ActiveRecord::Base
   has_many :retros
   has_many :memberships

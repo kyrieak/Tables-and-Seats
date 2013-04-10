@@ -1,3 +1,4 @@
+# Shared controller functionality
 class ApplicationController < ActionController::Base
   protect_from_forgery :except => :render_error
   before_filter :set_app_name

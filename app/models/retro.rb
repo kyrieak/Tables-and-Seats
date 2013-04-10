@@ -1,3 +1,4 @@
+# This is the reason we are here
 class Retro < ActiveRecord::Base
   has_many :remarks, :dependent => :destroy
   belongs_to :team

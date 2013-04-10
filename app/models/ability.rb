@@ -1,3 +1,4 @@
+# User roles using Cancan
 class Ability
 include CanCan::Ability
 

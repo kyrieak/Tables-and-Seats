@@ -1,3 +1,4 @@
+# Connotation: every remark has a connotation :) :| :(
 class Connotation < ActiveHash::Base
   include ActiveHash::Associations
   include ActiveHash::Enum

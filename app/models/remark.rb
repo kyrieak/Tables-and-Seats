@@ -1,3 +1,4 @@
+# A remark is a comment about how the project went
 class Remark < ActiveRecord::Base
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :retros

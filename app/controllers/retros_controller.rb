@@ -1,3 +1,4 @@
+# Retros controller manages retros
 class RetrosController < ApplicationController
   respond_to :html
   def index
