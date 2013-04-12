@@ -6,9 +6,13 @@ machine:
 dependencies:
   post:
     - npm install -g mocha
+    - npm install -g nodelint
+    - npm install -g coffeelint
 test:
   post:
     - mocha
+    - nodelint app/**/*.js
+    - coffeelint app/**/*.js.coffee
     - bundle exec cane
 deployment:
     production:
