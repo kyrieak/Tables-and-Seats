@@ -48,6 +48,7 @@ gem "simplecov", :require => false, :group => :test
 gem "immigrant"
 gem "slim"
 gem "bootstrap-datepicker-rails"
+gem "ember-rails"
 
 group :development, :test do
   gem "rspec-rails"

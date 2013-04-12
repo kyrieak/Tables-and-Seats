@@ -1,4 +1,4 @@
-Brimstone::Application.configure do
+RemoteRetro::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
   # In the development environment your application's code is reloaded on
@@ -35,4 +35,6 @@ Brimstone::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
   default_url_options[:host] = "0.0.0.0:3000"
+
+  config.ember.variant = :development
 end

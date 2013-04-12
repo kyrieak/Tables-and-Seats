@@ -1,4 +1,4 @@
-Brimstone::Application.routes.draw do
+RemoteRetro::Application.routes.draw do
   devise_for :users
   root :to => "retros#index"
 

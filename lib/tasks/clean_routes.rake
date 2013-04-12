@@ -44,11 +44,11 @@ end
 
 def get_all_routes
   if all_routes = ENV['CONTROLLER']
-    all_routes = Brimstone::Application.routes.select do |route|
+    all_routes = RemoteRetro::Application.routes.select do |route|
       route.defaults[:controller] == ENV['CONTROLLER']
     end
   else
-    all_routes = Brimstone::Application.routes
+    all_routes = RemoteRetro::Application.routes
   end
   all_routes
 end
