@@ -12,7 +12,7 @@ test:
   post:
     - mocha
     - nodelint app/**/*.js
-    - coffeelint app/**/*.js.coffee
+    - coffeelint app/**/*.coffee
     - bundle exec cane
 deployment:
     production:
