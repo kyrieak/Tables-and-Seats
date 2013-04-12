@@ -11,7 +11,8 @@ dependencies:
 test:
   post:
     - mocha
-    - ls $(pwd)/app/**/*.js
+    - find ./app -name \*.js -exec nodelint {} +
+    - find ./app -name \*.coffee -exec coffeelint {} +
     - bundle exec cane
 deployment:
     production:
