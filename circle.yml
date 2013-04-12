@@ -11,9 +11,8 @@ dependencies:
 test:
   post:
     - mocha
-    - pwd
-    - nodelint ./**/*.js
-    - coffeelint ./app**/*.coffee
+    - nodelint $(pwd)app/**/*.js
+    - coffeelint ./app/**/*.coffee
     - bundle exec cane
 deployment:
     production:
