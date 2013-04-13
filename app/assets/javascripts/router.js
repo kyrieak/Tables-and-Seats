@@ -1,3 +1,3 @@
-RemoteRetro.Router.map(function() {
+RemoteRetro.Router.map(function () {
 
 });

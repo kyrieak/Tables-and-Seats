@@ -1,0 +1,13 @@
+{
+    "undef"          : true,
+    "unused"         : true,
+    "strict"         : true,
+    "trailing"       : true,
+    "indent"         : 2,
+    "white"          : true,
+    "predef"         : [
+      "RemoteRetro",
+      "Ember",
+      "DS"
+    ]
+}
