@@ -177,6 +177,8 @@ GEM
       activesupport (>= 3.0)
       choice (~> 0.1.6)
       ruby-graphviz (~> 1.0.4)
+    rails3_pg_deferred_constraints (0.1.0)
+      rails (~> 3.2.0)
     rails_best_practices (1.13.4)
       activesupport
       awesome_print
@@ -294,6 +296,7 @@ DEPENDENCIES
   pg
   rails (= 3.2.11)
   rails-erd
+  rails3_pg_deferred_constraints
   rails_best_practices
   rb-fchange
   rb-fsevent

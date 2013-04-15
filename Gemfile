@@ -71,6 +71,7 @@ end
 
 group :test do
   gem "capybara"
+  gem "rails3_pg_deferred_constraints"
 end
 
 group :code_quality do
