@@ -10,7 +10,8 @@ describe Remark do
   it "is invalid without a connotation" do
     build(:remark, :connotation => nil).should_not be_valid
   end
-  it "is not valid without a title" do
-    build(:remark, :title => "").should_not be_valid
+
+  it "is not valid without content" do
+    build(:remark, :content => "").should_not be_valid
   end
 end

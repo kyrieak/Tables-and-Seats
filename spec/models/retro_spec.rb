@@ -28,15 +28,6 @@ describe Retro do
       build(:retro, :name => "Elephant").should be_valid
     end
 
-    it "has a state" do
-      create(:retro, :state => "Fishy")
-      Retro.find_by_state("Fishy").should be_kind_of(Retro)
-    end
-
-    it "is valid without a state" do
-      build(:retro, :state => nil).should be_valid
-    end
-
     it "is has a date" do
       build(:retro, :date => Date.new).should be_valid
     end
@@ -55,14 +46,12 @@ describe Retro do
   end
 
   it "allows voting by default"
-  it "does not allow voting when the state is closed"
 
   context "editing" do
     let(:team) { create(:team) }
     let(:team_two) { create(:team) }
     before do
       create(:retro, :name => "First Retro",
-             :state => "Fishy",
              :date => Date.today,
              :voting_allowed => false,
              :team_id => team.id
@@ -73,11 +62,6 @@ describe Retro do
     it "allows changing the name" do
       retro.update_attributes!({:name => "Nemo"})
       retro.name.should eq("Nemo")
-    end
-
-    it "allows editing of state" do
-      retro.update_attributes!({:state => "Open"})
-      retro.state.should eq("Open")
     end
 
     it "allows editing of date" do
@@ -98,7 +82,7 @@ describe Retro do
   end
 
   context "deleting a retro with remarks" do
-    let(:retro_with_remarks) {create (:retro_with_remarks)}
+    let(:retro_with_remarks) { create(:retro_with_remarks) }
 
     it "deletes the retro" do
       retro_with_remarks.remarks.count.should eq 3

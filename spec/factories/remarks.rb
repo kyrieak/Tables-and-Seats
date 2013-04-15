@@ -2,8 +2,7 @@
 
 FactoryGirl.define do
   factory :remark do |f|
-    f.title "MyString"
-    f.explanation "MyText"
+    f.content "MyText"
     f.connotation Connotation.find_by_name("Neutral")
   end
 end
