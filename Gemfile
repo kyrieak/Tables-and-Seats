@@ -49,6 +49,7 @@ gem "immigrant"
 gem "slim"
 gem "bootstrap-datepicker-rails"
 gem "ember-rails"
+gem "flutie"
 
 group :development, :test do
   gem "rspec-rails"
