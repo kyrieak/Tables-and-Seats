@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130214234045) do
+ActiveRecord::Schema.define(:version => 20130415215023) do
 
   create_table "assignments", :force => true do |t|
     t.integer  "user_id"
@@ -28,8 +28,7 @@ ActiveRecord::Schema.define(:version => 20130214234045) do
   end
 
   create_table "remarks", :force => true do |t|
-    t.string   "title"
-    t.text     "explanation"
+    t.text     "content"
     t.integer  "retro_id"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
@@ -37,7 +36,6 @@ ActiveRecord::Schema.define(:version => 20130214234045) do
   end
 
   create_table "retros", :force => true do |t|
-    t.string   "state"
     t.date     "date"
     t.boolean  "voting_allowed"
     t.datetime "created_at",     :null => false
