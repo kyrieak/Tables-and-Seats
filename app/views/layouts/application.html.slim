@@ -1,0 +1,29 @@
+doctype html
+html
+  head
+    title = page_title(app_name: @app_name)
+    = stylesheet_link_tag "application", media: "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+    /[if lt IE 9]
+      = javascript_include_tag "http://html5shim.googlecode.com/svn/trunk/html5.js"
+    = yield :head
+  body class="#{body_class}"
+    div.navbar.navbar-fixed-top
+      div.navbar-inner
+        div.container
+          = link_to @app_name, root_path, class: "brand"
+          ul.nav
+            li.active = link_to "Home", root_path
+          ul.nav.pull-right
+            - if user_signed_in?
+              li = link_to "Sign Out", destroy_user_session_path, method: :delete
+            - else
+              li = link_to "Sign Up", new_user_registration_path
+              li = link_to "Sign In", new_user_session_path
+    div.container-fluid
+      = render partial: "shared/flash_messages", locals: { flash: flash }
+      = yield
+      hr
+      footer
+        p &copy; #{@app_name} #{Date.today.year}
