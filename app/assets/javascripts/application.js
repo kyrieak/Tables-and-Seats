@@ -1,3 +1,4 @@
+/*global RemoteRetro:true Ember:true */
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap-datepicker
