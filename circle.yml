@@ -6,12 +6,12 @@ machine:
 dependencies:
   post:
     - npm install -g mocha
-    - npm install -g jslint
+    - npm install -g jshint
     - npm install -g coffeelint
 test:
   post:
     - mocha
-    - rake jslint
+    - rake jshint
     - find ./app -name \*.coffee -exec coffeelint {} +
     - bundle exec cane
 deployment:
