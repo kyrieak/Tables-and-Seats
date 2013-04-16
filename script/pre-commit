@@ -1,5 +1,7 @@
 #!/bin/bash
 ## START PRECOMMIT HOOK
+# Install with:
+# ln -s ../../script/pre-commit .git/hooks/pre-commit
 
 files_modified=`git status --porcelain | egrep "^(A |M |R ).*" | awk ' { if ($3 == "->") print $4; else print $2 } '`
 
@@ -15,7 +17,8 @@ for f in $files_modified; do
 			echo "File ${f} failed"
 			exit 1
 		fi
-		cane $f
+		echo "Running cane for $f"
+		cane -f $f
 		if [ $? != 0 ]; then
 			echo "Cane failed for $f"
 			exit 1
