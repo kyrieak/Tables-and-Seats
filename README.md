@@ -4,7 +4,7 @@
 Project dependencies: 
 
 * Ruby 1.9+
-* Node.js and [Node package modules](https://npmjs.org/)
+* Node.js and [Node packaged modules](https://npmjs.org/)
 * Coffeelint: `npm install -g coffeelint`
 * JSHint: `npm install -g jshint`
 
