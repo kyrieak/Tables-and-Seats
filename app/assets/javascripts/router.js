@@ -1,3 +1,0 @@
-RemoteRetro.Router.map(function () {
-
-});

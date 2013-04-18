@@ -10,4 +10,6 @@ class ApplicationController < ActionController::Base
   def set_app_name
     @app_name = "Remote Retro"
   end
+  def index
+  end
 end

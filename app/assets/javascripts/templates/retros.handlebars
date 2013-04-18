@@ -1,5 +1,10 @@
-<h1>Retros</h1>
+<h3>Add a new retro</h3>
 
-<p>Your content here.</p>
-
-{{outlet}}
+{{view Ember.TextField valueBinding="newRetroName" action="addRetro"}}
+<ul>
+  {{#each controller}}
+    <li>
+      {{name}}
+    </li>
+  {{/each}}
+</ul>
