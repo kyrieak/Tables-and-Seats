@@ -1,0 +1,20 @@
+%h1 Listing retros
+
+%table
+  %tr
+    %th
+      Name
+    %th
+    %th
+    %th
+
+  - @retros.each do |retro|
+    %tr
+      %td= retro.name
+      %td= link_to 'Show', retro
+      %td= link_to 'Edit', edit_retro_path(retro)
+      %td= link_to 'Destroy', retro, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Retro', new_retro_path

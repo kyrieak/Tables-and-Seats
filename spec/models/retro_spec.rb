@@ -28,12 +28,8 @@ describe Retro do
       build(:retro, :name => "Elephant").should be_valid
     end
 
-    it "is has a date" do
-      build(:retro, :date => Date.new).should be_valid
-    end
-
-    it "is invalid without a date" do
-      build(:retro, :date => nil).should_not be_valid
+    it "is invalid without a name" do
+      build(:retro, :name => nil).should_not be_valid
     end
   end
 

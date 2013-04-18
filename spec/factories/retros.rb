@@ -3,8 +3,6 @@
 FactoryGirl.define do
   factory :retro do
     name "Default Retro"
-    date "2013-02-01"
-    voting_allowed true
     factory :retro_with_remarks do
       remarks { Array.new(3) { FactoryGirl.build(:remark) } }
     end

@@ -5,7 +5,6 @@ class Retro < ActiveRecord::Base
   has_many :remarks, :dependent => :destroy
   belongs_to :team
 
-  validates :date, :presence => true
   validates :name, :presence => true
 
   def connotations
