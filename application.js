@@ -6,4 +6,4 @@
 //= require_self
 //= require retros
 //= require remarks
-RemoteRetro = Ember.Application.create();
+//= require boot
