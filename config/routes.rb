@@ -1,6 +1,6 @@
 RemoteRetro::Application.routes.draw do
   devise_for :users
-  root :to => "application#index"
+  root :to => "home#index"
 
   resources :retros do
     resources :remarks
