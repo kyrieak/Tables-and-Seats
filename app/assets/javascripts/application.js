@@ -4,6 +4,7 @@
 //= require handlebars
 //= require ember
 //= require ember-data
+//= require boot
 //= require_self
 //= require retros
-RemoteRetro = Ember.Application.create();
+
