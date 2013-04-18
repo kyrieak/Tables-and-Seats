@@ -50,6 +50,7 @@ gem "slim"
 gem "bootstrap-datepicker-rails"
 gem "ember-rails"
 gem "flutie"
+gem 'simple_form'
 
 group :development, :test do
   gem "rspec-rails"
