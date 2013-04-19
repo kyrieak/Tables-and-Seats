@@ -1,9 +1,7 @@
 <h3>Add a new retro</h3>
 {{view RemoteRetro.NewRetroView}}
-<ul>
+<div>
   {{#each controller}}
-    <li>
-      {{name}}
-    </li>
+    {{partial "retros_row"}}
   {{/each}}
-</ul>
+</div>
