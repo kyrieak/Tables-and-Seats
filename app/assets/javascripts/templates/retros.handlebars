@@ -1,9 +1,5 @@
 <h3>Add a new retro</h3>
-
-<form>
-{{view Ember.TextField valueBinding="newRetroName"}}
-<input type="submit" class="btn btn-primary" value="Add" {{action addRetro}}>
-</form>
+{{view RemoteRetro.NewRetroView}}
 <ul>
   {{#each controller}}
     <li>
