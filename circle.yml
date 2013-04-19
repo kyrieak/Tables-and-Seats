@@ -12,7 +12,7 @@ test:
   post:
     - mocha
     - rake jshint
-    - find ./app -name \*.coffee -exec coffeelint {} +
+    - rake coffeelint
     - bundle exec cane
 deployment:
     production:
