@@ -7,5 +7,5 @@ begin
     config.stylesheets  = %w(application)
   end if defined?(Konacha)
 rescue LoadError => e
- logger.warn "Error loading Capybara/Poltergeist"
+ puts "Error loading Capybara/Poltergeist"
 end
