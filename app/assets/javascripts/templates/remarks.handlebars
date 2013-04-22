@@ -1,9 +1,39 @@
-<h3>Add Items</h3>
-<div>
-  I need ... I want ... I like ...
-</div>
-<div>
-  {{#each controller}}
-    HI THERE
-  {{/each}}
+<div class="container">
+
+  <h1>Add Items</h1>
+
+  <div class="row">
+    <div class="span12">
+      I need ... I want ... I like ...
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="span12">
+      {{view Ember.TextArea rows=4 valueBinding='newRemarkContent' submit=false}}
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="span12">
+      <button class="btn btn-danger conn_btn" {{action 'addSad'}}>
+        :-(
+      </button>
+      <button class="btn btn-info conn_btn" {{action 'addNeutral'}}>
+        :-|
+      </button>
+      <button class="btn btn-success conn_btn" {{action 'addHappy'}}>
+        :-)
+      </button>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="span12">
+      {{#each controller}}
+          {{partial "remark_report"}}
+      {{/each}}
+    </div>
+  </div>
+
 </div>

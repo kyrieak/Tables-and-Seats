@@ -1,26 +1,35 @@
-require 'faker'
-
 namespace :db do
-  task :populate => :environment do
-    # teams = 8.times.collect{ |n| Team.create! }
-    # teams.shuffle.each do |t|
-    #   r = t.retros.build({
-    #                     :date => (Date.today + rand(8)),
-    #                     :name => (Faker::Company.catch_phrase),
-    #                     :state => (Faker::Company.bs),
-    #                     :voting_allowed => false
-    #                 })
-    #   r.save
-    # end
-    # Retro.all.each do |r|
-    #   15.times do
-    #     rem = r.remarks.build({
-    #                     :connotation_id => rand(1..3),
-    #                     :title => Faker::Address.city,
-    #                     :explanation => Faker::Company.bs
-    #                   })
-    #     rem.save
-    #   end
-    # end
+  namespace :user_test do
+
+    task :setup => :environment do
+      Retro.create({ :name => "User Test Retro" })
+
+      User.create({ :email => "subject_a@usertest.com",
+                    :password => "password_a" })
+
+      User.create({ :email => "subject_b@usertest.com",
+                    :password => "password_b" })
+
+      User.create({ :email => "subject_c@usertest.com",
+                    :password => "password_c" })
+
+    end
+
+    # atm only deletes the remarks added by the test user
+    task :cleanup => :environment do
+
+      users = [
+                User.find({ :email => "subject_a@usertest.com" }),
+                User.find({ :email => "subject_b@usertest.com" }),
+                User.find({ :email => "subject_c@usertest.com" })
+              ]
+
+      users.each do |user|
+        remarks = Remark.find({ :user_id => user.id })
+        remarks.each(&:destroy)
+      end
+
+    end
+
   end
 end
