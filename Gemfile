@@ -59,6 +59,7 @@ group :development, :test do
   gem "immigrant"
   gem "faker"
   gem 'konacha'
+  gem 'poltergeist'
 end
 
 group :development do

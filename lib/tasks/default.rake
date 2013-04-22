@@ -1,1 +1,1 @@
-task :default => [:test, :jshint, :coffeelint, :cane]
+task :default => [:test, :jshint, :coffeelint, :cane, "konacha:run"]
