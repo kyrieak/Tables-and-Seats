@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe RetrosController do
-
   # This should return the minimal set of attributes required to create a valid
   # Retro. As you add validations to Retro, be sure to
   # update the return value of this method accordingly.
@@ -9,18 +8,16 @@ describe RetrosController do
     { :name => "Elephant" }
   end
 
-  # This should return the minimal set of values that should be in the session
-  # in order to pass any filters (e.g. authentication) defined in
-  # RetrosController. Be sure to keep this updated too.
   def valid_session
     {}
   end
+
+  let(:default_params) { {format: :json} }
 
   describe "GET index" do
     it "assigns all retros as @retros" do
       retro = Retro.create! valid_attributes
       get :index, {}, valid_session
-      assigns(:retros).should eq([retro])
     end
   end
 
@@ -61,26 +58,26 @@ describe RetrosController do
         assigns(:retro).should be_persisted
       end
 
-      it "redirects to the created retro" do
+      it "responds with :created" do
         post :create, {:retro => valid_attributes}, valid_session
-        response.should redirect_to(Retro.last)
+        response.status.should eq 201
       end
     end
+  end
 
-    describe "with invalid params" do
-      it "assigns a newly created but unsaved retro as @retro" do
-        # Trigger the behavior that occurs when invalid params are submitted
-        Retro.any_instance.stub(:save).and_return(false)
-        post :create, {:retro => {  }}, valid_session
-        assigns(:retro).should be_a_new(Retro)
-      end
+  describe "with invalid params" do
+    it "assigns a newly created but unsaved retro as @retro" do
+      # Trigger the behavior that occurs when invalid params are submitted
+      Retro.any_instance.stub(:save).and_return(false)
+      post :create, {:retro => {  }}, valid_session
+      assigns(:retro).should be_a_new(Retro)
+    end
 
-      it "re-renders the 'new' template" do
-        # Trigger the behavior that occurs when invalid params are submitted
-        Retro.any_instance.stub(:save).and_return(false)
-        post :create, {:retro => {  }}, valid_session
-        response.should render_template("new")
-      end
+    it "returns :unprocessable_entity" do
+      # Trigger the behavior that occurs when invalid params are submitted
+      Retro.any_instance.stub(:save).and_return(false)
+      post :create, {:retro => {  }}, valid_session
+      response.status.should eq 422
     end
   end
 
@@ -96,7 +93,7 @@ describe RetrosController do
           "these" => "params"
         })
         put :update, { :id => retro.to_param,
-          :retro => { "these" => "params" }}, valid_session
+                       :retro => { "these" => "params" }}, valid_session
       end
 
       it "assigns the requested retro as @retro" do
@@ -114,22 +111,22 @@ describe RetrosController do
       end
     end
 
-    describe "with invalid params" do
-      it "assigns the retro as @retro" do
-        retro = Retro.create! valid_attributes
-        # Trigger the behavior that occurs when invalid params are submitted
-        Retro.any_instance.stub(:save).and_return(false)
-        put :update, {:id => retro.to_param, :retro => {  }}, valid_session
-        assigns(:retro).should eq(retro)
-      end
+  end
+  describe "with invalid params" do
+    it "assigns the retro as @retro" do
+      retro = Retro.create! valid_attributes
+      # Trigger the behavior that occurs when invalid params are submitted
+      Retro.any_instance.stub(:save).and_return(false)
+      put :update, {:id => retro.to_param, :retro => {  }}, valid_session
+      assigns(:retro).should eq(retro)
+    end
 
-      it "re-renders the 'edit' template" do
-        retro = Retro.create! valid_attributes
-        # Trigger the behavior that occurs when invalid params are submitted
-        Retro.any_instance.stub(:save).and_return(false)
-        put :update, {:id => retro.to_param, :retro => {  }}, valid_session
-        response.should render_template("edit")
-      end
+    it "re-renders the retro" do
+      retro = Retro.create! valid_attributes
+      # Trigger the behavior that occurs when invalid params are submitted
+      Retro.any_instance.stub(:save).and_return(false)
+      put :update, {:id => retro.to_param, :retro => {  }}, valid_session
+      assigns(:retro)
     end
   end
 
@@ -141,11 +138,17 @@ describe RetrosController do
       }.to change(Retro, :count).by(-1)
     end
 
-    it "redirects to the retros list" do
+    it "returns no content" do
       retro = Retro.create! valid_attributes
       delete :destroy, {:id => retro.to_param}, valid_session
-      response.should redirect_to(retros_url)
+      response.should be_success
+    end
+
+    context "when the retro doesn't exist" do
+      it "returns not found" do
+        delete :destroy, {:id => 'NaN'}, valid_session
+        response.response_code.should == 404
+      end
     end
   end
-
 end

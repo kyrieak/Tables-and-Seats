@@ -9,11 +9,14 @@ dependencies:
     - npm install -g jshint
     - npm install -g coffeelint
 test:
+  override:
+    - rake spec:coverage
   post:
+    - rake cane
     - mocha
     - rake jshint
     - rake coffeelint
-    - bundle exec cane
+    - rake konacha:run
 deployment:
     production:
       branch: master
