@@ -58,6 +58,7 @@ group :development, :test do
   gem "zeus"
   gem "immigrant"
   gem "faker"
+  gem 'konacha'
 end
 
 group :development do
