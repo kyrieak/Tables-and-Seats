@@ -1,3 +1,4 @@
+require 'bundler/setup'
 require 'capybara/poltergeist'
 Konacha.configure do |config|
   config.spec_dir     = "spec/javascripts"
