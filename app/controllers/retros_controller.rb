@@ -1,41 +1,31 @@
 # Retros controller manages retros
 class RetrosController < ApplicationController
+  respond_to :json
   # GET /retros
   # GET /retros.json
   def index
     @retros = Retro.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @retros }
-    end
+    respond_with @retros
   end
 
   # GET /retros/1
   # GET /retros/1.json
   def show
     @retro = Retro.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @retro }
-    end
+    respond_with @retro
   end
 
   # GET /retros/new
   # GET /retros/new.json
   def new
     @retro = Retro.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @retro }
-    end
+    respond_with @retro
   end
 
   # GET /retros/1/edit
   def edit
     @retro = Retro.find(params[:id])
+    respond_with @retro
   end
 
   # POST /retros
@@ -43,18 +33,13 @@ class RetrosController < ApplicationController
   def create
     @retro = Retro.new(params[:retro])
 
-    respond_to do |format|
-      if @retro.save
-        format.html { redirect_to @retro,
-                      notice: 'Retro was successfully created.' }
-        format.json { render json: @retro,
-                      status: :created,
-                      location: @retro }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @retro.errors,
-                      status: :unprocessable_entity }
-      end
+    if @retro.save
+      respond_with @retro, {
+        status: :created,
+        location: @retro }
+    else
+      respond_with @retro, {
+        status: :unprocessable_entity }
     end
   end
 
@@ -63,28 +48,25 @@ class RetrosController < ApplicationController
   def update
     @retro = Retro.find(params[:id])
 
-    respond_to do |format|
-      if @retro.update_attributes(params[:retro])
-        format.html { redirect_to @retro,
-                      notice: 'Retro was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @retro.errors,
-                      status: :unprocessable_entity }
-      end
+    if @retro.update_attributes(params[:retro])
+      redirect_to retro_path(@retro)
+    else
+      respond_with @retro, {
+        status: :unprocessable_entity }
     end
   end
 
   # DELETE /retros/1
   # DELETE /retros/1.json
   def destroy
-    @retro = Retro.find(params[:id])
-    @retro.destroy
-
-    respond_to do |format|
-      format.html { redirect_to retros_url }
-      format.json { head :no_content }
+    @retro = Retro.find_by_id(params[:id])
+    if @retro
+      @retro.destroy
+      notice = "Successfully destroyed retro."
+      render :json => {notice: notice}
+    else
+      render :json => {:error => "Retro Not found"},
+        :status => :not_found
     end
   end
 end
