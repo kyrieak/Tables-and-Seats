@@ -1,0 +1,1 @@
+RemoteRetro.RemarksController = Ember.ArrayController.extend()
