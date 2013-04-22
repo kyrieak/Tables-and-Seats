@@ -16,6 +16,7 @@ test:
     - mocha
     - rake jshint
     - rake coffeelint
+    - rake konacha:run
 deployment:
     production:
       branch: master
