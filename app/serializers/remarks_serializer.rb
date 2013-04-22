@@ -1,4 +1,5 @@
 # Attributes to serialize to JSON
-class RetroSerializer < ActiveModel::Serializer
+class RemarkSerializer < ActiveModel::Serializer
   attributes :id, :name
 end
+
