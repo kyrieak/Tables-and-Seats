@@ -46,7 +46,7 @@ gem "dynamic_form"
 gem "active_hash"
 gem "simplecov", :require => false, :group => :test
 gem "immigrant"
-gem "slim"
+gem "slim-rails"
 gem "bootstrap-datepicker-rails"
 gem "ember-rails"
 gem "flutie"

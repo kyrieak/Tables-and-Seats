@@ -1,1 +1,2 @@
---style-exclude config/initializers/simple_form_bootstrap.rb
+--doc-exclude config/*
+--style-exclude config/*

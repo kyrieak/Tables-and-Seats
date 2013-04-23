@@ -1,81 +1,62 @@
 # Remarks are individual comments in the remark
 class RemarksController < ApplicationController
-
-# GET /remarks
-# GET /remarks.json
+  respond_to :json
+  # GET /remarks
+  # GET /remarks.json
   def index
     @remarks = Remark.all
-
-    respond_to do |format|
-      format.json { render json: @remarks }
-    end
+    respond_with @remarks
   end
 
-# GET /remarks/1
-# GET /remarks/1.json
+  # GET /remarks/1
+  # GET /remarks/1.json
   def show
     @remark = Remark.find(params[:id])
-
-    respond_to do |format|
-      format.json { render json: @remark }
-    end
+    respond_with @remark
   end
 
-# GET /remarks/new
-# GET /remarks/new.json
+  # GET /remarks/new
+  # GET /remarks/new.json
   def new
     @remark = Remark.new
-
-    respond_to do |format|
-      format.json { render json: @remark }
-    end
+    respond_with @remark
   end
 
-# GET /remarks/1/edit
+  # GET /remarks/1/edit
   def edit
     @remark = Remark.find(params[:id])
+    respond_with @remark
   end
 
-# POST /remarks
-# POST /remarks.json
+  # POST /remarks
+  # POST /remarks.json
   def create
     @remark = Remark.new(params[:remark])
-
-    respond_to do |format|
-      if @remark.save
-        format.json { render json: @remark,
-                             status: :created,
-                             location: @remark }
-      else
-        format.json { render json: @remark.errors,
-                             status: :unprocessable_entity }
-      end
+    if @remark.save
+      respond_with @remark, { status: :created,
+                              location: @remark }
+    else
+      render :json => { error: "Unable to create remark" }, :status => 422
     end
   end
 
-# PUT /remarks/1
-# PUT /remarks/1.json
+  # PUT /remarks/1
+  # PUT /remarks/1.json
   def update
     @remark = Remark.find(params[:id])
 
-    respond_to do |format|
-      if @remark.update_attributes(params[:remark])
-        format.json { head :no_content }
-      else
-        format.json { render json: @remark.errors,
-                             status: :unprocessable_entity }
-      end
+    if @remark.update_attributes(params[:remark])
+      respond_with @remark
+    else
+      render :json => { error: "Unable to update remark" }, :status => 422
     end
   end
 
-# DELETE /remarks/1
-# DELETE /remarks/1.json
+  # DELETE /remarks/1
+  # DELETE /remarks/1.json
   def destroy
     @remark = Remark.find(params[:id])
     @remark.destroy
-
-    respond_to do |format|
-      format.json { head :no_content }
-    end
+    respond_with @remark, { head: :no_content }
   end
 end

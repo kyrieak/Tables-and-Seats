@@ -21,7 +21,7 @@ module RemoteRetro
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
     require 'bootstrap-sass'
-    
+
     config.generators do |g|
       g.test_framework :rspec,
         fixtures: true,
@@ -31,6 +31,8 @@ module RemoteRetro
         controller_specs: true,
         request_specs: true
       g.fixture_replacement :factory_girl, dir: "spec/factories"
+      g.template_engine :slim
+      g.stylesheets false
     end
 
     # see: https://coderwall.com/p/w3ghqq

@@ -6,6 +6,8 @@ RemoteRetro::Application.routes.draw do
 
   resources :remarks
 
+  resources :remarks
+
   match '/404', :to => "application#render_error"
   match '/500', :to => "application#render_error"
 
