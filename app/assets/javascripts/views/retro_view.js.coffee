@@ -1,1 +1,1 @@
-App.RetroView = Ember.View.extend
+App.RetroView = Ember.View.extend()

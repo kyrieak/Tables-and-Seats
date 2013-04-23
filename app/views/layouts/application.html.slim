@@ -5,12 +5,14 @@ html
     = stylesheet_link_tag "application", media: "all"
     = javascript_include_tag "application" \
         unless params[:controller] == 'application'
+    coffee:
+      App.advanceReadiness()
 
     = csrf_meta_tags
     /[if lt IE 9]
       = javascript_include_tag "http://html5shim.googlecode.com/svn/trunk/html5.js"
     = yield :head
-  body class="#{body_class}"
+  body class="#{body_class} container-fluid"
     div.navbar.navbar-fixed-top
       div.navbar-inner
         div.container
@@ -23,10 +25,9 @@ html
             - else
               li = link_to "Sign Up", new_user_registration_path
               li = link_to "Sign In", new_user_session_path
-    div.container-fluid
+    div.row
+      div.container-fluid
       = render partial: "shared/flash_messages", locals: { flash: flash }
-      #pageContent
+    .row
+      div.container-fluid
         = yield
-      hr
-      footer
-        p &copy; #{@app_name} #{Date.today.year}
