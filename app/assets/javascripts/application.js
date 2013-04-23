@@ -7,4 +7,4 @@
 //= require boot
 //= require_self
 //= require retros
-
+//= require jquery.ui.all

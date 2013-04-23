@@ -17,3 +17,34 @@ body {
 h1 {
   text-align: center;
 }
+
+pre {
+  text-align: center;
+}
+
+.pos pre {
+  background-color: #dff0d8;
+}
+
+.meh pre {
+   background-color: #d9edf7;
+}
+
+.neg pre {
+  background-color: #f2dede;
+}
+
+.remarks {
+  display: block;
+  .column {
+    display:table;
+  }
+}
+
+pre.remark {
+  display: table-cell;
+  vertical-align: middle;
+  background-color: #fcf8e3;
+  height: 300px;
+  margin: 0 auto;
+}

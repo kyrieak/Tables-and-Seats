@@ -51,6 +51,7 @@ gem "bootstrap-datepicker-rails"
 gem "ember-rails"
 gem "flutie"
 gem 'simple_form'
+gem 'jquery-ui-sass-rails'
 
 group :development, :test do
   gem "rspec-rails"
