@@ -1,1 +1,2 @@
---style-exclude config/initializers/*
+--doc-exclude config/*
+--style-exclude config/*
