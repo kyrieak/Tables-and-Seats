@@ -1,3 +1,3 @@
-RemoteRetro.TextField = Ember.TextField.extend
+App.TextField = Ember.TextField.extend
   attributeBindings:  ['required']
   required:           null

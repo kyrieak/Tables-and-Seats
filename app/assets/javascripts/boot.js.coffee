@@ -1,2 +1,2 @@
-window.RemoteRetro = Ember.Application.create
+window.App = Ember.Application.create
   rootElement: "#pageContent"

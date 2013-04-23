@@ -1,13 +1,13 @@
-RemoteRetro.Router.map ->
+App.Router.map ->
   @route 'retros', path: '/'
   @route 'remarks',  path: '/remarks'
   @route 'remarks', path: '/user_test'
 
-RemoteRetro.RetrosRoute = Ember.Route.extend
-  model: -> RemoteRetro.Retro.find()
+App.RetrosRoute = Ember.Route.extend
+  model: -> App.Retro.find()
 
-RemoteRetro.RemarksRoute = Ember.Route.extend
-  model: -> RemoteRetro.Remark.find()
+App.RemarksRoute = Ember.Route.extend
+  model: -> App.Remark.find()
 
-RemoteRetro.UserTestRoute = Ember.Route.extend
-  model: -> RemoteRetro.Remark.find()
+App.UserTestRoute = Ember.Route.extend
+  model: -> App.Remark.find()

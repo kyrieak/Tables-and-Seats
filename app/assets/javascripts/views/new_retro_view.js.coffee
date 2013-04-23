@@ -1,4 +1,4 @@
-RemoteRetro.NewRetroView = Ember.View.extend
+App.NewRetroView = Ember.View.extend
   templateName: 'new_retro'
   tagName: 'form'
   classNames: ['form-horizontal']

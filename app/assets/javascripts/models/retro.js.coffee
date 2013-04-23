@@ -1,2 +1,2 @@
-RemoteRetro.Retro = DS.Model.extend
+App.Retro = DS.Model.extend
   name: DS.attr('string')

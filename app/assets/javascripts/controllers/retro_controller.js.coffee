@@ -1,1 +1,1 @@
-RemoteRetro.RetroController = Ember.ObjectController.extend
+App.RetroController = Ember.ObjectController.extend

@@ -1,3 +1,3 @@
-RemoteRetro.RetroRoute = Ember.Route.extend({
+App.RetroRoute = Ember.Route.extend({
 
 });
