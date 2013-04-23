@@ -60,6 +60,7 @@ group :development, :test do
   gem "immigrant"
   gem "faker"
   gem 'konacha'
+  gem 'ember-konacha-rails', github: 'kristianmandrup/ember-konacha-rails'
   gem 'poltergeist'
 end
 
