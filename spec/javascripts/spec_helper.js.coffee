@@ -65,9 +65,7 @@ beforeEach( (done) ->
 
 afterEach( ->
   # Reset App
-  Ember.run( ->
-    App.reset()
-  )
+  App.reset()
 
   # reset all test variables!
   window.Test = {}
