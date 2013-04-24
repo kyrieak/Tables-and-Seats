@@ -1,9 +1,8 @@
 <h1>Retros</hi>
-
 <h3>Add a new retro</h3>
 {{view App.NewRetroView}}
 <div>
   {{#each controller}}
-    <a href="/#remarks">{{partial "retros_row"}}</a>
+  {{#linkTo "remarks"}}{{partial "retros_row"}}{{/linkTo}}
   {{/each}}
 </div>
