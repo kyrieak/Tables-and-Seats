@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "Retros" do
+describe "Tables" do
   describe "GET /retros" do
     it "works! (now write some real specs)" do
       # Run the generator again with the --webrat

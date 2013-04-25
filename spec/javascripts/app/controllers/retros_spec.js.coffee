@@ -1,18 +1,18 @@
 ##= require spec_helper
 #
-#describe "Retros", ->
+#describe "Tables", ->
 #  beforeEach( ->
 #    Test.store = TestUtil.lookupStore()
 #
 #    Ember.run( ->
-#      Test.store.loadMany(App.Retros, [
+#      Test.store.loadMany(App.Tables, [
 #        {id: 1, name: 'Alpha'},
 #        {id: 2, name: 'Beta'},
 #        {id: 3, name: 'Zeus'},
 #      ])
 #
-#      controller = App.RetrosController.create()
-#      controller.set 'content', Test.store.findMany(App.Retros, [1, 2, 3])
+#      controller = App.TablesController.create()
+#      controller.set 'content', Test.store.findMany(App.Tables, [1, 2, 3])
 #    )
 #  )
 #

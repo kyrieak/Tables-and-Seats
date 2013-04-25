@@ -1,18 +1,18 @@
 ##= require spec_helper
 #
-#describe "Remarks", ->
+#describe "Seats", ->
 #  beforeEach( ->
 #    Test.store = TestUtil.lookupStore()
 #
 #    Ember.run( ->
-#      Test.store.loadMany(App.Remarks, [
+#      Test.store.loadMany(App.Seats, [
 #        {id: 1, name: 'Alpha'},
 #        {id: 2, name: 'Beta'},
 #        {id: 3, name: 'Zeus'},
 #      ])
 #
-#      controller = App.RemarksController.create()
-#      controller.set 'content', Test.store.findMany(App.Remarks, [1, 2, 3])
+#      controller = App.SeatsController.create()
+#      controller.set 'content', Test.store.findMany(App.Seats, [1, 2, 3])
 #    )
 #  )
 #

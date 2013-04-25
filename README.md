@@ -1,4 +1,4 @@
-#Remote Retro
+#Remote Table
 ###Installing
 
 Project dependencies:

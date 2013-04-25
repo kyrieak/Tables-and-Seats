@@ -1,12 +1,12 @@
 require 'spec_helper'
 
-describe Retro do
+describe Table do
   let(:retro) { create :retro }
 
   context "setup" do
 
-    it "has no remarks to begin with" do
-      retro.remarks.count.should eq 0
+    it "has no seats to begin with" do
+      retro.seats.count.should eq 0
     end
 
     it "has a valid factory" do
@@ -19,7 +19,7 @@ describe Retro do
     it "creates the record in the database" do
       expect {
         retro.save.should be_true
-      }.to change(Retro, :count).by(1)
+      }.to change(Table, :count).by(1)
     end
   end
 
@@ -47,7 +47,7 @@ describe Retro do
     let(:team) { create(:team) }
     let(:team_two) { create(:team) }
     before do
-      create(:retro, :name => "First Retro",
+      create(:retro, :name => "First Table",
              :date => Date.today,
              :voting_allowed => false,
              :team_id => team.id
@@ -77,14 +77,14 @@ describe Retro do
 
   end
 
-  context "deleting a retro with remarks" do
-    let(:retro_with_remarks) { create(:retro_with_remarks) }
+  context "deleting a retro with seats" do
+    let(:retro_with_seats) { create(:retro_with_seats) }
 
     it "deletes the retro" do
-      retro_with_remarks.remarks.count.should eq 3
+      retro_with_seats.seats.count.should eq 3
       expect {
-        retro_with_remarks.destroy
-      }.to change(Remark, :count).by(-3)
+        retro_with_seats.destroy
+      }.to change(Seat, :count).by(-3)
     end
 
   end

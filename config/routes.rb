@@ -1,11 +1,11 @@
 RemoteRetro::Application.routes.draw do
-  devise_for :users
+  
   root :to => "home#index"
 
-  resources :retros
+  resources :tables
 
-  resources :remarks
+  resources :seats
 
-  get '/wireframes/remarks', :to => "application#remarks"
+  get '/wireframes/seats', :to => "application#seats"
 
 end

@@ -1,9 +1,9 @@
 App.Router.map ->
-  @route 'retros', path: '/'
-  @route 'remarks',  path: '/remarks/'
+  @route 'tables', path: '/'
+  @route 'seats',  path: '/seats/'
 
-App.RetrosRoute = Ember.Route.extend
-  model: -> App.Retro.find()
+App.TablesRoute = Ember.Route.extend
+  model: -> App.Table.find()
 
-App.RemarksRoute = Ember.Route.extend
-  model: -> App.Remark.find()
+App.SeatsRoute = Ember.Route.extend
+  model: -> App.Seat.find()

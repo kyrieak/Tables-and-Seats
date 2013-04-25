@@ -5,15 +5,15 @@ common: &common
 
 development:
   <<: *common
-  database: retro_development
+  database: table_dev
 
 test:
   <<: *common
-  database: retro_test
+  database: table_test
   allow_concurrency: true
   pool: 5
   min_messages: error
 
 production:
   <<: *common
-  database: retro_production
+  database: table_prod

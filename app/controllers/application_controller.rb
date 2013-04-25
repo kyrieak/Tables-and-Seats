@@ -8,9 +8,9 @@ class ApplicationController < ActionController::Base
     :password => "brimstone" unless Rails.env.test? || Rails.env.development?
 
   def set_app_name
-    @app_name = "Remote Retro"
+    @app_name = "RemoteRetro"
   end
 
-  def remarks
+  def seats
   end
 end

@@ -11,71 +11,26 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130415215023) do
+ActiveRecord::Schema.define(:version => 20130425211429) do
 
-  create_table "assignments", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "role_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "memberships", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "team_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "remarks", :force => true do |t|
-    t.text     "content"
-    t.integer  "retro_id"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
-    t.integer  "connotation_id"
-  end
-
-  create_table "retros", :force => true do |t|
-    t.date     "date"
-    t.boolean  "voting_allowed"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
-    t.string   "name"
-    t.integer  "team_id"
-  end
-
-  create_table "roles", :force => true do |t|
+  create_table "moods", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
-  create_table "teams", :force => true do |t|
+  create_table "seats", :force => true do |t|
+    t.integer  "table_id"
+    t.integer  "mood_id"
+    t.string   "occupant"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.string   "name"
   end
 
-  create_table "users", :force => true do |t|
-    t.string   "email",                  :default => "", :null => false
-    t.string   "encrypted_password",     :default => "", :null => false
-    t.string   "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          :default => 0
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
+  create_table "tables", :force => true do |t|
+    t.string   "party"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
-
-  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
-  add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
-
-  add_foreign_key "remarks", "retros", :name => "remarks_retro_id_fk"
-
-  add_foreign_key "retros", "teams", :name => "retros_team_id_fk"
 
 end

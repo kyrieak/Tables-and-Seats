@@ -1,1 +1,1 @@
-App.RetrosView = Ember.View.extend()
+App.TablesView = Ember.View.extend()
