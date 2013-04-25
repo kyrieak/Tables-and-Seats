@@ -1,6 +1,28 @@
+<p> each controller</p>
 {{#each controller}}
-  {{party}}
-  {{this}}
-  {{#linkTo this.seats}}{{party}}{{/linkTo}}
-  <br/>
+
+  <table>
+    <tr>
+      <td style="width:200px">Table Party: {{party}}</td>
+    </tr>
+    <tr>
+      <td style="width:200px">Seats: {{seats}}</td>
+    </tr>
+    <tr>
+      <td style="width:200px">seats length: {{seats.length}}</td>
+    </tr>
+    <tr>
+      <td style="width:200px">this: {{this}}</td>
+    </tr>
+    <tr>
+      <td style="width:200px">link to this.seats: {{#linkTo this.seats}}{{party}}{{/linkTo}}</td>
+    </tr>
+  </table>
+
+  <hr>
+
+  {{#each seats}}
+    test
+  {{/each}}
+
 {{/each}}

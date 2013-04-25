@@ -5,6 +5,7 @@ class TablesController < ApplicationController
   # GET /tables.json
   def index
     @tables = Table.all
+
     respond_with @tables
   end
 
