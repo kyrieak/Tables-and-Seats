@@ -1,3 +1,3 @@
 App.Mood = DS.Model.extend
   name: DS.attr('string')
-  seats: DS.hasMany('seats')
+  seats: DS.hasMany('App.Seat')
